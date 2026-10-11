@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  
+  --color-navy-950: #060D17;
+  --color-navy-900: #0B192C;
+  --color-navy-850: #0F223B;
+  --color-navy-800: #142A4A;
+  --color-navy-700: #1D3B66;
+
+  --color-sand-50: #FAF9F5;
+  --color-sand-100: #F4F2EB;
+  --color-sand-200: #E8E5DA;
+  --color-sand-300: #D6D2C4;
+
+  --color-gold-300: #E5C98D;
+  --color-gold-400: #D4B678;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #A88340;
+  --color-gold-700: #8C6A2E;
+
+  --color-charcoal-900: #151B26;
+  --color-charcoal-800: #232B3A;
+  --color-charcoal-600: #4B5565;
+  --color-charcoal-400: #738094;
+}
+
+@theme {
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  --color-navy-950: #060D17;
+  --color-navy-900: #0B192C;
+  --color-navy-850: #0F223B;
+  --color-navy-800: #142A4A;
+  --color-navy-700: #1D3B66;
+
+  --color-sand-50: #FAF9F5;
+  --color-sand-100: #F4F2EB;
+  --color-sand-200: #E8E5DA;
+  --color-sand-300: #D6D2C4;
+
+  --color-gold-300: #E5C98D;
+  --color-gold-400: #D4B678;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #A88340;
+  --color-gold-700: #8C6A2E;
+
+  --color-charcoal-900: #151B26;
+  --color-charcoal-800: #232B3A;
+  --color-charcoal-600: #4B5565;
+  --color-charcoal-400: #738094;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FAF9F5;
+  color: #151B26;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Patrón sutil arquitectónico */
+.bg-grid-subtle {
+  background-image: 
+    linear-gradient(rgba(11, 25, 44, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 25, 44, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.bg-grid-dark {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Transiciones sobrias y accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
