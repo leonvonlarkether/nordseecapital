@@ -42,14 +42,16 @@ export const siteConfig: SiteConfig = {
     {
       city: "Santiago",
       country: "Chile",
-      address: "Los Militares 4777, Piso 21, Oficina 2101",
+      address: "Los Militares (Piso 21, Of. 2101 — numeración 447 / 4777 sujeta a ratificación oficial)",
+      office: "Piso 21, Oficina 2101",
       role: "Sede Corporativa Principal",
-      status: "verified",
+      status: "pending_confirmation",
     },
     {
       city: "Concepción",
       country: "Chile",
       address: "Bernardo O'Higgins 241, Piso 9, Oficina 903",
+      office: "Piso 9, Oficina 903",
       role: "Oficina Regional Sur",
       status: "verified",
     },

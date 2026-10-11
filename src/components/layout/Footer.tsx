@@ -22,14 +22,14 @@ export function Footer() {
             </p>
 
             <div className="pt-2 space-y-2 text-xs text-[#FAF9F5]/80">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
                 <span>
-                  Santiago: Los Militares 4777, Piso 21, Oficina 2101
+                  Santiago: Los Militares (Piso 21, Of. 2101 · num. 447 / 4777 sujeta a ratificación)
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
                 <span>
                   Concepción: Bernardo O&apos;Higgins 241, Piso 9, Oficina 903
                 </span>

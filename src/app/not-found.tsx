@@ -1,9 +1,18 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Home } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Página No Encontrada | Error 404",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
