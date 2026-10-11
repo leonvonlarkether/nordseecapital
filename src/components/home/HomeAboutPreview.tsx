@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
@@ -13,11 +14,47 @@ export function HomeAboutPreview() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF9F5] border-b border-black/5">
+    <section className="py-24 sm:py-32 bg-[#FAF9F5] border-b border-black/5 relative overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Columna Visual / Editorial Diptych */}
+          <div className="lg:col-span-5 order-2 lg:order-1 relative">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-2xl shadow-[#0B192C]/10 aspect-[4/5] group">
+                <Image
+                  src="/images/about/atrium-corporate.jpg"
+                  alt="Espacio corporativo y atrio institucional de Nordsee Capital"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/90 via-[#0B192C]/30 to-transparent pointer-events-none" />
+
+                {/* Cita institucional sobrepuesta en la base de la imagen */}
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block mb-2">
+                    Misión y Propósito
+                  </span>
+                  <blockquote className="font-serif text-lg leading-snug text-white/95 mb-3">
+                    “Ser un partner de excelencia en inversiones y negocios estables,
+                    comprometido con la disciplina técnica y el resguardo patrimonial.”
+                  </blockquote>
+                  <div className="pt-3 border-t border-white/15 flex items-center justify-between text-[11px] text-white/60">
+                    <span>Disciplina Analítica</span>
+                    <span className="text-[#C5A059]">Gobernanza Rigurosa</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sello de confianza lateral decorativo */}
+              <div className="hidden sm:block absolute -top-4 -right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-black/5 shadow-lg text-xs font-semibold text-[#0B192C]">
+                <span className="text-[#C5A059] mr-1">✦</span> Criterio Institucional
+              </div>
+            </div>
+          </div>
+
           {/* Columna Textual */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 order-1 lg:order-2 space-y-6">
             <Badge variant="light">Identidad y Enfoque</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight">
               Un socio estratégico que integra capital, negocios y estructura jurídica.
@@ -50,28 +87,6 @@ export function HomeAboutPreview() {
                 <span>Conocer nuestra filosofía y equipo</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
-            </div>
-          </div>
-
-          {/* Columna Visual / Editorial Callout */}
-          <div className="lg:col-span-5">
-            <div className="bg-[#0B192C] text-[#FAF9F5] rounded-3xl p-8 sm:p-10 border border-white/10 shadow-xl shadow-black/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#C5A059]/15 rounded-full blur-2xl pointer-events-none" />
-
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059] block mb-4">
-                Declaración de Misión
-              </span>
-
-              <blockquote className="font-serif text-xl sm:text-2xl text-[#FAF9F5] font-normal leading-snug mb-6">
-                “Ser un partner de excelencia en inversiones y negocios estables,
-                comprometido con la disciplina técnica, el resguardo patrimonial y
-                el estricto cumplimiento regulatorio.”
-              </blockquote>
-
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-[#FAF9F5]/70">
-                <span>Nordsee Capital Management</span>
-                <span className="text-[#C5A059]">Santiago · Chile</span>
-              </div>
             </div>
           </div>
         </div>

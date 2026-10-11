@@ -1,15 +1,26 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
 import { services } from "@/content/services";
 import { ArrowUpRight } from "lucide-react";
 
+// Mapeo de fotografía arquitectónica editorial curada por área
+const serviceImages: Record<string, string> = {
+  "real-estate": "/images/services/real-estate.jpg",
+  "wealth-management": "/images/services/wealth-management.jpg",
+  "deuda-privada": "/images/services/deuda-privada.jpg",
+  ma: "/images/services/ma.jpg",
+  "tax-legal": "/images/services/tax-legal.jpg",
+  "golden-visa-portugal": "/images/services/golden-visa.jpg",
+};
+
 export function HomeServicesSection() {
   return (
     <section className="py-24 sm:py-32 bg-[#FAF9F5]" id="servicios">
       <Container>
-        <div className="max-w-2xl mb-14 sm:mb-20">
+        <div className="max-w-3xl mb-14 sm:mb-20">
           <Badge variant="gold">Áreas de Especialización</Badge>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight">
             Estructuras sólidas para cada dimensión del capital.
@@ -21,58 +32,81 @@ export function HomeServicesSection() {
           </p>
         </div>
 
-        {/* Grilla 3x2 de servicios */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {services.map((service) => (
-            <article
-              key={service.slug}
-              className="group bg-white rounded-2xl p-7 sm:p-8 border border-black/5 hover:border-[#C5A059]/40 shadow-xs hover:shadow-xl hover:shadow-[#0B192C]/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="font-serif text-xl text-[#C5A059] font-normal">
-                    {service.id}
-                  </span>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#738094]">
-                    {service.geographicCoverage || "Global"}
-                  </span>
-                </div>
+        {/* Grilla 3x2 de servicios con fotografía arquitectónica */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => {
+            const imageSrc = serviceImages[service.slug] || "/images/home/hero-nordsee.jpg";
 
-                <h3 className="font-serif text-2xl text-[#0B192C] font-normal group-hover:text-[#102540] transition-colors leading-snug mb-3">
-                  {service.shortTitle}
-                </h3>
+            return (
+              <article
+                key={service.slug}
+                className="group bg-white rounded-3xl overflow-hidden border border-black/5 hover:border-[#C5A059]/50 shadow-xs hover:shadow-2xl hover:shadow-[#0B192C]/8 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Ventana fotográfica arquitectónica */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#0B192C]/5">
+                    <Image
+                      src={imageSrc}
+                      alt={`Área de ${service.title} en Nordsee Capital`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-                <p className="text-sm text-[#4B5565] leading-relaxed mb-6">
-                  {service.summary}
-                </p>
-
-                <div className="space-y-2 pt-4 border-t border-black/5 mb-6">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#738094] block mb-2">
-                    Alcance de Intervención:
-                  </span>
-                  {service.keyCapabilities.slice(0, 3).map((cap, i) => (
-                    <div
-                      key={i}
-                      className="text-xs text-[#232B3A] flex items-center gap-2"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
-                      <span className="line-clamp-1">{cap}</span>
+                    {/* Metadatos sobre la imagen */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white pointer-events-none">
+                      <span className="font-serif text-sm font-semibold tracking-wider px-2.5 py-1 rounded-full bg-[#0B192C]/80 backdrop-blur-sm text-[#C5A059] border border-[#C5A059]/30">
+                        {service.id}
+                      </span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[#0B192C]">
+                        {service.geographicCoverage || "Global"}
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
 
-              <div className="pt-4 border-t border-black/5">
-                <Link
-                  href={`/servicios/${service.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B192C] group-hover:text-[#C5A059] transition-colors"
-                >
-                  <span>Ver detalle del servicio</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
-            </article>
-          ))}
+                  {/* Contenido textual */}
+                  <div className="p-7 sm:p-8">
+                    <h3 className="font-serif text-2xl text-[#0B192C] font-normal group-hover:text-[#C5A059] transition-colors leading-snug mb-3">
+                      {service.shortTitle}
+                    </h3>
+
+                    <p className="text-sm text-[#4B5565] leading-relaxed mb-6">
+                      {service.summary}
+                    </p>
+
+                    <div className="space-y-2 pt-4 border-t border-black/5 mb-2">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#738094] block mb-2">
+                        Alcance de Intervención:
+                      </span>
+                      {service.keyCapabilities.slice(0, 3).map((cap, i) => (
+                        <div
+                          key={i}
+                          className="text-xs text-[#232B3A] flex items-center gap-2"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
+                          <span className="line-clamp-1">{cap}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-7 sm:px-8 pb-7 sm:pb-8 pt-4 border-t border-black/5 bg-[#FAF9F5]/40 flex items-center justify-between">
+                  <Link
+                    href={`/servicios/${service.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B192C] group-hover:text-[#C5A059] transition-colors"
+                  >
+                    <span>Ver detalle del servicio</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C5A059]" />
+                  </Link>
+                  <span className="text-[11px] text-[#738094] group-hover:text-[#0B192C] transition-colors">
+                    Nordsee
+                  </span>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Container>
     </section>

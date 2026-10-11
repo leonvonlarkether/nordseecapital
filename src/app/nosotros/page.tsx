@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Badge } from "@/components/ui/Badge";
@@ -65,16 +66,16 @@ export default function NosotrosPage() {
         breadcrumbs={[{ label: "Nosotros" }]}
       />
 
-      {/* Sección Filosofía y Propuesta de Valor */}
+      {/* Sección Filosofía y Propuesta de Valor con Fotografía Arquitectónica */}
       <section className="py-20 sm:py-28 bg-[#FAF9F5]">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-6 space-y-6">
               <Badge variant="gold">Nuestra Filosofía</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight">
                 El valor no se mide solo en retorno, sino en la solidez de la estructura.
               </h2>
-              <p className="text-base text-[#4B5565] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed">
                 En un entorno global volátil, los patrimonios requieren más que
                 meros distribuidores de productos financieros. Requieren socios
                 estratégicos capaces de sentarse a la mesa con una mirada
@@ -82,31 +83,40 @@ export default function NosotrosPage() {
                 analizando tasas de descuento y optimizando el impacto fiscal de
                 cada decisión.
               </p>
-            </div>
 
-            <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-12 border border-black/5 shadow-xs space-y-8">
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#C5A059] block mb-2">
+              <div className="bg-white rounded-2xl p-6 border border-black/5 shadow-2xs space-y-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#C5A059] block">
                   Nuestra Misión
                 </span>
-                <p className="font-serif text-xl sm:text-2xl text-[#0B192C] font-normal leading-relaxed">
-                  Ser el partner de excelencia en inversiones y negocios
+                <p className="font-serif text-lg text-[#0B192C] font-normal leading-snug">
+                  “Ser el partner de excelencia en inversiones y negocios
                   estables para clientes con visión global, actuando con
-                  independencia técnica, disciplina fiduciaria y apego
-                  inquebrantable a la ley.
+                  independencia técnica y apego inquebrantable a la ley.”
                 </p>
               </div>
+            </div>
 
-              <div className="pt-6 border-t border-black/5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#738094] block mb-2">
-                  Modelo de Acompañamiento
-                </span>
-                <p className="text-sm text-[#4B5565] leading-relaxed">
-                  Alineamos nuestros incentivos con los objetivos de largo plazo de
-                  nuestros clientes. Trabajamos bajo un esquema de asesoría
-                  transparente donde cada recomendación cuenta con una
-                  justificación económica y jurídica verificable.
-                </p>
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-2xl shadow-[#0B192C]/10 aspect-[4/3] group">
+                <Image
+                  src="/images/about/atrium-corporate.jpg"
+                  alt="Espacio institucional y atrio corporativo de Nordsee Capital"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
+                      Espacio Institucional
+                    </span>
+                  </div>
+                  <p className="font-serif text-base text-white/95">
+                    Ambiente de confianza, sobriedad y análisis estratégico multidisciplinario.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

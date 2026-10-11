@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Badge } from "@/components/ui/Badge";
@@ -40,6 +41,26 @@ export default function ContactoPage() {
                   Nuestros canales están disponibles para inversionistas, familias
                   y empresas interesadas en nuestras áreas de práctica.
                 </p>
+              </div>
+
+              {/* Fotografía editorial de la sede principal */}
+              <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-lg aspect-[16/9] group">
+                <Image
+                  src="/images/contact/santiago-corporate.jpg"
+                  alt="Fachada corporativa en Santiago de Chile"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute bottom-3 left-4 right-4 text-white pointer-events-none">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block">
+                    Sede Corporativa
+                  </span>
+                  <span className="font-serif text-sm text-white/95">
+                    Las Condes · Santiago de Chile
+                  </span>
+                </div>
               </div>
 
               {/* Tarjetas de Sedes */}

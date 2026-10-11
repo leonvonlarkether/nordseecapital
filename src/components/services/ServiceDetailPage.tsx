@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -17,11 +18,21 @@ interface ServiceDetailPageProps {
   clientNeeds: string[];
 }
 
+const serviceImages: Record<string, string> = {
+  "real-estate": "/images/services/real-estate.jpg",
+  "wealth-management": "/images/services/wealth-management.jpg",
+  "deuda-privada": "/images/services/deuda-privada.jpg",
+  ma: "/images/services/ma.jpg",
+  "tax-legal": "/images/services/tax-legal.jpg",
+  "golden-visa-portugal": "/images/services/golden-visa.jpg",
+};
+
 export function ServiceDetailPage({
   service,
   clientNeeds,
 }: ServiceDetailPageProps) {
   const otherServices = services.filter((s) => s.slug !== service.slug);
+  const imageSrc = serviceImages[service.slug] || "/images/home/hero-nordsee.jpg";
 
   return (
     <>
@@ -35,7 +46,7 @@ export function ServiceDetailPage({
         ]}
       />
 
-      {/* Descripción y Necesidades que atiende */}
+      {/* Descripción, fotografía institucional y Necesidades que atiende */}
       <section className="py-20 sm:py-28 bg-[#FAF9F5]">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -73,8 +84,28 @@ export function ServiceDetailPage({
               </div>
             </div>
 
-            {/* Columna Lateral: Alcance de Intervención y Enfoque */}
+            {/* Columna Lateral: Fotografía editorial y Alcance */}
             <div className="lg:col-span-5 space-y-8">
+              {/* Ventana fotográfica arquitectónica de la especialidad */}
+              <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-xl shadow-[#0B192C]/10 aspect-[16/10] sm:aspect-[4/3] group">
+                <Image
+                  src={imageSrc}
+                  alt={`Arquitectura y contexto de ${service.title}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute bottom-4 left-5 right-5 text-white pointer-events-none">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block">
+                    Disciplina Especializada
+                  </span>
+                  <span className="font-serif text-base text-white/95">
+                    {service.shortTitle} · Nordsee Capital
+                  </span>
+                </div>
+              </div>
+
               <div className="bg-white rounded-3xl p-8 border border-black/5 shadow-xs space-y-6">
                 <h3 className="font-serif text-xl text-[#0B192C] font-normal pb-4 border-b border-black/5">
                   Alcance de Nuestra Intervención
