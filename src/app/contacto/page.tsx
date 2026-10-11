@@ -1,0 +1,113 @@
+import type { Metadata } from "next";
+import { Container } from "@/components/ui/Container";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { Badge } from "@/components/ui/Badge";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { siteConfig } from "@/content/site";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contacto | Sedes y Canales Oficiales | Nordsee Capital",
+  description:
+    "Comuníquese con nuestros socios directores. Sedes corporativas en Santiago y Concepción. Atención personalizada para clientes locales e internacionales.",
+  alternates: {
+    canonical: "/contacto",
+  },
+};
+
+export default function ContactoPage() {
+  return (
+    <>
+      <PageHeader
+        badge="Canales Corporativos"
+        title="Iniciemos una conversación estratégica."
+        description="Estamos a su disposición para coordinar reuniones en nuestras oficinas de Santiago o Concepción, o mediante sesión virtual para clientes e inversionistas en el exterior."
+        breadcrumbs={[{ label: "Contacto" }]}
+      />
+
+      <section className="py-20 sm:py-28 bg-[#FAF9F5]">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Columna Izquierda: Información de Sedes y Canales */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <Badge variant="gold">Atención Personalizada</Badge>
+                <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight">
+                  Coordenadas oficiales
+                </h2>
+                <p className="text-sm sm:text-base text-[#4B5565] leading-relaxed">
+                  Operamos con total discreción y agilidad en la respuesta.
+                  Nuestros canales están disponibles para inversionistas, familias
+                  y empresas interesadas en nuestras áreas de práctica.
+                </p>
+              </div>
+
+              {/* Tarjetas de Sedes */}
+              <div className="space-y-4">
+                {siteConfig.offices.map((office) => (
+                  <div
+                    key={office.city}
+                    className="bg-white rounded-2xl p-6 border border-black/5 shadow-2xs space-y-2"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[#C5A059]">
+                        {office.role}
+                      </span>
+                      <span className="text-xs font-medium text-[#738094]">
+                        {office.country}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-xl text-[#0B192C] font-normal">
+                      {office.city}
+                    </h3>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-[#4B5565] pt-1">
+                      <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+                      <span>{office.address}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Teléfono y Correo */}
+              <div className="bg-[#0B192C] text-[#FAF9F5] rounded-2xl p-6 sm:p-8 space-y-4 border border-white/10">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#C5A059]">
+                  Canales Directos
+                </h4>
+
+                <div className="space-y-3 text-sm">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors"
+                  >
+                    <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <span>{siteConfig.email}</span>
+                  </a>
+
+                  <a
+                    href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                    className="flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <span>{siteConfig.phone}</span>
+                  </a>
+
+                  <div className="flex items-center gap-3 text-xs text-[#FAF9F5]/60 pt-2 border-t border-white/10">
+                    <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <span>Horario de atención: Lunes a Viernes, 09:00 a 18:30 (CLT)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Columna Derecha: Formulario Interactivo */}
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}
