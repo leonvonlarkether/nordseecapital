@@ -108,6 +108,38 @@ body {
   will-change: transform;
 }
 
+/* Entrada cinematográfica escalonada de los textos del Hero */
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-badge {
+  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.animate-hero-title {
+  animation: heroTextReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+}
+
+.animate-hero-sub {
+  animation: heroTextReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
+.animate-hero-cta {
+  animation: heroTextReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
+}
+
+.animate-hero-zocalo {
+  animation: heroTextReveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
 /* Transiciones sobrias y accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

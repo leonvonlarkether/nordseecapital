@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
+import { ScrollReveal } from "../ui/ScrollReveal";
 import { siteConfig } from "@/content/site";
 import { MapPin, Globe2 } from "lucide-react";
 
@@ -9,7 +10,7 @@ export function HomeInternationalPresence() {
     <section className="py-24 sm:py-32 bg-[#F4F2EB] border-b border-black/5">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 space-y-6">
+          <ScrollReveal direction="left" delay={50} className="lg:col-span-5 space-y-6">
             <Badge variant="light">Alcance Geográfico</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight">
               Presencia operativa y alianzas en tres mercados estratégicos.
@@ -38,26 +39,30 @@ export function HomeInternationalPresence() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {siteConfig.internationalReach.map((item) => (
-              <div
+            {siteConfig.internationalReach.map((item, index) => (
+              <ScrollReveal
                 key={item.region}
-                className="bg-white rounded-2xl p-6 sm:p-7 border border-black/5 shadow-xs flex flex-col justify-between"
+                delay={index * 120}
+                direction="up"
+                className="h-full"
               >
-                <div>
-                  <div className="w-9 h-9 rounded-xl bg-[#0B192C] text-[#C5A059] flex items-center justify-center mb-5">
-                    <Globe2 className="w-4 h-4" />
+                <div className="bg-white rounded-2xl p-6 sm:p-7 border border-black/5 shadow-xs flex flex-col justify-between h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                  <div>
+                    <div className="w-9 h-9 rounded-xl bg-[#0B192C] text-[#C5A059] flex items-center justify-center mb-5">
+                      <Globe2 className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-serif text-lg text-[#0B192C] font-normal mb-2">
+                      {item.region}
+                    </h3>
+                    <p className="text-xs text-[#5D6A7E] leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="font-serif text-lg text-[#0B192C] font-normal mb-2">
-                    {item.region}
-                  </h3>
-                  <p className="text-xs text-[#5D6A7E] leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

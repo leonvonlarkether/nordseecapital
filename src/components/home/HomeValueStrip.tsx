@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "../ui/Container";
+import { ScrollReveal } from "../ui/ScrollReveal";
 
 export function HomeValueStrip() {
   const values = [
@@ -25,8 +26,9 @@ export function HomeValueStrip() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {values.map((v, index) => (
-            <div
+            <ScrollReveal
               key={v.num}
+              delay={index * 120}
               className={`flex items-start gap-4 sm:gap-5 ${
                 index !== 0 ? "md:border-l md:border-white/10 md:pl-8 lg:pl-10" : ""
               }`}
@@ -42,7 +44,7 @@ export function HomeValueStrip() {
                   {v.desc}
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </Container>

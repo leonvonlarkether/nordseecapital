@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
 import { Button } from "../ui/Button";
+import { ScrollReveal } from "../ui/ScrollReveal";
 import { siteConfig } from "@/content/site";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 
@@ -12,7 +13,7 @@ export function HomeCtaSection() {
       <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#C5A059]/10 blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
+        <ScrollReveal direction="up" delay={50} className="max-w-3xl mx-auto text-center space-y-8">
           <Badge variant="dark">Contacto Institucional</Badge>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F5] font-normal tracking-tight leading-tight">
@@ -48,7 +49,7 @@ export function HomeCtaSection() {
               <span>{siteConfig.phone}</span>
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </Container>
     </section>
   );
