@@ -41,7 +41,7 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const isDarkHero = pathname === "/" && !isScrolled;
+  const isDarkHero = pathname === "/" && !isScrolled && !mobileMenuOpen;
 
   return (
     <header

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BrandLogoProps {
@@ -12,64 +13,52 @@ export function BrandLogo({
   className = "",
   withTagline = false,
 }: BrandLogoProps) {
-  const isDark = variant === "dark";
+  // variant "light" = fondo oscuro (texto blanco del logo original)
+  // variant "dark" = fondo claro (texto azul marino contrastado)
+  const isDarkBg = variant === "light";
 
   return (
     <Link
       href="/"
-      className={`group inline-flex items-center gap-3.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-sm ${className}`}
+      className={`group inline-flex items-center gap-3.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-sm transition-opacity hover:opacity-90 ${className}`}
       aria-label="Nordsee Capital - Inicio"
     >
-      {/* Símbolo heráldico-arquitectónico nórdico */}
-      <div
-        className={`w-10 h-10 rounded-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105 ${
-          isDark
-            ? "bg-[#0B192C] text-[#C5A059] border border-[#C5A059]/30 shadow-xs"
-            : "bg-white/10 text-[#C5A059] border border-white/20"
-        }`}
-      >
-        <svg
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6"
-          aria-hidden="true"
-        >
-          {/* Geometría estilizada del monograma N y horizonte marítimo */}
-          <path
-            d="M8 24V8L24 24V8"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="8" cy="8" r="1.5" fill="currentColor" />
-          <circle cx="24" cy="24" r="1.5" fill="currentColor" />
-        </svg>
+      <div className="relative h-9 sm:h-10 w-[140px] sm:w-[155px] flex items-center">
+        {/* Versión para fondo oscuro (texto blanco oficial) */}
+        <Image
+          src="/images/logo-nordsee.png"
+          alt="Nordsee Capital"
+          width={581}
+          height={180}
+          priority
+          className={`h-full w-auto object-contain object-left transition-opacity duration-300 ${
+            isDarkBg ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"
+          }`}
+        />
+        {/* Versión para fondo claro (texto marino #0B192C de alto contraste) */}
+        <Image
+          src="/images/logo-nordsee-dark.png"
+          alt="Nordsee Capital"
+          width={581}
+          height={180}
+          priority
+          className={`h-full w-auto object-contain object-left transition-opacity duration-300 ${
+            !isDarkBg ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"
+          }`}
+        />
       </div>
 
-      {/* Logotipo tipográfico */}
-      <div className="flex flex-col">
+      {withTagline && (
         <span
-          className={`font-serif tracking-tight text-xl leading-none transition-colors ${
-            isDark ? "text-[#0B192C]" : "text-[#FAF9F5]"
+          className={`text-[9px] font-semibold tracking-[0.22em] uppercase hidden xl:inline-block pl-3.5 border-l ${
+            isDarkBg
+              ? "text-white/60 border-white/20"
+              : "text-[#738094] border-black/10"
           }`}
         >
-          NORDSEE
+          Private Wealth &amp; Advisory
         </span>
-        <span
-          className={`text-[9px] font-semibold tracking-[0.28em] uppercase leading-tight mt-0.5 ${
-            isDark ? "text-[#5D6A7E]" : "text-[#C5A059]"
-          }`}
-        >
-          CAPITAL
-        </span>
-        {withTagline && (
-          <span className="text-[10px] text-[#738094] mt-0.5 tracking-wider hidden sm:inline">
-            MANAGEMENT
-          </span>
-        )}
-      </div>
+      )}
     </Link>
   );
 }
