@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
@@ -38,18 +39,22 @@ export function HomeTeamSection() {
           {teamMembers.map((member, index) => (
             <ScrollReveal
               key={member.name}
-              delay={index * 120}
+              delay={index * 140}
               direction="up"
               className="h-full"
             >
-              <div className="bg-white rounded-2xl p-8 border border-black/5 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between h-full">
+              <div className="group bg-white rounded-3xl p-7 sm:p-8 border border-black/5 shadow-xs hover:shadow-xl hover:border-[#C5A059]/40 hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between h-full">
                 <div>
-                  {/* Avatar monocromo institucional */}
-                  <div className="w-16 h-16 rounded-full bg-[#0B192C] text-[#C5A059] flex items-center justify-center font-serif text-xl mb-6 border border-[#C5A059]/30">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
+                  {/* Retrato fotográfico profesional del socio */}
+                  <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 bg-[#0B192C]/5 border border-black/5 group-hover:border-[#C5A059]/30 transition-colors shadow-2xs">
+                    <Image
+                      src={member.image}
+                      alt={`Fotografía profesional de ${member.name} — Socio Director de Nordsee Capital`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/30 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity" />
                   </div>
 
                   <h3 className="font-serif text-2xl text-[#0B192C] font-normal mb-1">

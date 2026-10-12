@@ -41,7 +41,7 @@ export function HomeServicesSection() {
             return (
               <ScrollReveal
                 key={service.slug}
-                delay={index * 90}
+                delay={index * 160}
                 direction="up"
                 className="h-full"
               >

@@ -165,24 +165,51 @@ export default function NosotrosPage() {
       {/* Enlace al equipo y CTA */}
       <section className="py-20 sm:py-28 bg-[#FAF9F5] border-t border-black/5">
         <Container>
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <Badge variant="gold">Equipo y Gobernanza</Badge>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight">
-              Conozca a los profesionales detrás de Nordsee Capital.
-            </h2>
-            <p className="text-base text-[#5D6A7E] leading-relaxed">
-              Un equipo multidisciplinario con más de una década de experiencia
-              en banca de inversión, estructuración inmobiliaria y derecho
-              tributario de alto nivel.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <Button href="/equipo" variant="primary" size="md">
-                <span>Ver Equipo Directivo</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
-              <Button href="/contacto" variant="ghost" size="md">
-                Contactar con un Socio
-              </Button>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-6 space-y-6">
+              <Badge variant="gold">Equipo y Gobernanza</Badge>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight">
+                Conozca a los profesionales detrás de Nordsee Capital.
+              </h2>
+              <p className="text-base text-[#4B5565] leading-relaxed">
+                Un equipo multidisciplinario liderado directamente por sus socios
+                directores —Martin Strube, Fernando Llull y Fernando Prat— con más
+                de una década de experiencia combinada en finanzas corporativas,
+                estructuración inmobiliaria y derecho tributario de postgrado.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button href="/equipo" variant="primary" size="md">
+                  <span>Ver Equipo Directivo</span>
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+                <Button href="/contacto" variant="ghost" size="md">
+                  Contactar con un Socio
+                </Button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-xl aspect-[4/3] group bg-[#0B192C]/5">
+                <Image
+                  src="/images/about/3socios.png"
+                  alt="Socios Directores de Nordsee Capital en su sede corporativa"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-102"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block mb-1">
+                    Socios Directores
+                  </span>
+                  <p className="font-serif text-base sm:text-lg text-white/95 leading-snug">
+                    Martin Strube · Fernando Llull · Fernando Prat
+                  </p>
+                  <p className="text-xs text-white/70 mt-1">
+                    Atención boutique y acceso directo sin intermediarios
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </Container>

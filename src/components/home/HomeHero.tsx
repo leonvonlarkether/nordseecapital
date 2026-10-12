@@ -1,8 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 export function HomeHero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Breve pausa deliberada para que el usuario contemple primero la escena del video
+    // y luego experimente la aparición pausada y solemne de la tipografía.
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative min-h-[90svh] lg:min-h-[94svh] xl:min-h-screen flex flex-col justify-between overflow-hidden bg-[#07101C]">
       {/* 1. Fondo Cinematográfico Panorámico en Video (Video Limpio y Nítido) */}
@@ -33,7 +46,10 @@ export function HomeHero() {
         <div className="w-full max-w-[1800px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
           <div className="max-w-2xl lg:max-w-3xl xl:max-w-3xl space-y-5 sm:space-y-6">
             {/* Etiqueta editorial discreta */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#FAF9F5] shadow-sm animate-hero-badge">
+            <div
+              className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#FAF9F5] shadow-sm transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[350ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-[#FAF9F5]">
                 NORDSEE CAPITAL · PRIVATE WEALTH &amp; INVESTMENT STRATEGY
@@ -41,7 +57,10 @@ export function HomeHero() {
             </div>
 
             {/* Titular monumental editorial en exactamente 2 líneas deliberadas */}
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-normal tracking-tight text-[#FAF9F5] leading-[1.08] drop-shadow-md animate-hero-title">
+            <h1
+              className={`font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-normal tracking-tight text-[#FAF9F5] leading-[1.08] drop-shadow-md transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+            >
               El patrimonio exige visión.
               <br />
               <span className="italic font-serif text-[#C5A059]">
@@ -50,14 +69,20 @@ export function HomeHero() {
             </h1>
 
             {/* Subtítulo editorial con alto contraste y lectura ágil */}
-            <p className="text-sm sm:text-base md:text-lg text-[#FAF9F5]/90 leading-relaxed font-normal max-w-xl drop-shadow-sm animate-hero-sub">
+            <p
+              className={`text-sm sm:text-base md:text-lg text-[#FAF9F5]/90 leading-relaxed font-normal max-w-xl drop-shadow-sm transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[950ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+            >
               Integramos estrategia patrimonial, inversión inmobiliaria y
               estructuración legal para familias, empresas e inversionistas con
               visión de largo plazo.
             </p>
 
             {/* Acciones principales integradas */}
-            <div className="flex flex-wrap items-center gap-4 pt-1 animate-hero-cta">
+            <div
+              className={`flex flex-wrap items-center gap-4 pt-1 transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1250ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+            >
               <Button href="/contacto" variant="gold" size="md">
                 <span>Conversemos sobre su patrimonio</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -71,7 +96,10 @@ export function HomeHero() {
       </div>
 
       {/* 3. Zócalo Institucional Integrado en la Base del Hero */}
-      <div className="relative z-10 border-t border-white/15 bg-black/40 backdrop-blur-md py-3.5 sm:py-4 animate-hero-zocalo">
+      <div
+        className={`relative z-10 border-t border-white/15 bg-black/40 backdrop-blur-md py-3.5 sm:py-4 transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1550ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+      >
         <div className="w-full max-w-[1800px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex items-center justify-between text-xs text-[#FAF9F5]/80">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
