@@ -21,7 +21,13 @@ export interface SiteConfig {
   offices: OfficeLocation[];
   internationalReach: {
     region: string;
+    subregion?: string;
+    badge?: string;
+    flags: { src: string; alt: string }[];
     description: string;
+    highlights: string[];
+    href: string;
+    ctaText: string;
   }[];
   regulatoryNotice: string;
 }
@@ -59,15 +65,52 @@ export const siteConfig: SiteConfig = {
   internationalReach: [
     {
       region: "Chile",
-      description: "Base operativa corporativa, estructuración societaria y gestión de inversiones locales.",
+      subregion: "Hub Cono Sur",
+      badge: "Sede Principal",
+      flags: [
+        { src: "/images/home/chile.png", alt: "Bandera de Chile" }
+      ],
+      description: "Base operativa corporativa, estructuración societaria, gestión de patrimonios familiares e inversión local con resguardo fiduciario.",
+      highlights: [
+        "Santiago & Concepción",
+        "Estructuración Legal & Tax",
+        "Asesoría Patrimonial"
+      ],
+      href: "/nosotros",
+      ctaText: "Ver Sede y Equipo"
     },
     {
       region: "Estados Unidos",
-      description: "Originación y coinversión en activos inmobiliarios comerciales y residenciales prime.",
+      subregion: "Mercado Prime",
+      badge: "Norteamérica",
+      flags: [
+        { src: "/images/home/estados_unidos.png", alt: "Bandera de Estados Unidos" }
+      ],
+      description: "Originación y coinversión en activos inmobiliarios comerciales y residenciales prime, con mitigación de riesgos y deuda estructurada.",
+      highlights: [
+        "Activos Inmobiliarios Prime",
+        "Deuda Privada Estructurada",
+        "Criterio Transfronterizo"
+      ],
+      href: "/servicios/real-estate",
+      ctaText: "Ver Real Estate"
     },
     {
       region: "Portugal & Europa",
-      description: "Alianza estratégica local para estructuración legal, due diligence y procesos de residencia por inversión.",
+      subregion: "Plataforma UE",
+      badge: "Unión Europea",
+      flags: [
+        { src: "/images/home/portugal.png", alt: "Bandera de Portugal" },
+        { src: "/images/home/union_europea.png", alt: "Bandera de la Unión Europea" }
+      ],
+      description: "Alianza estratégica local para estructuración legal, due diligence inmobiliario y procesos de elegibilidad Golden Visa europea.",
+      highlights: [
+        "Golden Visa Portugal",
+        "Planificación Fiscal UE",
+        "Presencia en Lisboa"
+      ],
+      href: "/servicios/golden-visa-portugal",
+      ctaText: "Ver Golden Visa"
     },
   ],
   regulatoryNotice:
