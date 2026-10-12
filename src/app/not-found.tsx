@@ -49,7 +49,7 @@ export default function NotFound() {
               <Link href="/nosotros" className="hover:text-[#C5A059] transition-colors">
                 Nosotros
               </Link>
-              <Link href="/equipo" className="hover:text-[#C5A059] transition-colors">
+              <Link href="/nosotros#equipo" className="hover:text-[#C5A059] transition-colors">
                 Equipo Directivo
               </Link>
               <Link href="/contacto" className="hover:text-[#C5A059] transition-colors">

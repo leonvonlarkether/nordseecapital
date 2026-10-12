@@ -26,7 +26,7 @@ export function HomeTeamSection() {
 
           <ScrollReveal direction="left" delay={150}>
             <Link
-              href="/equipo"
+              href="/nosotros#equipo"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group shrink-0"
             >
               <span>Ver antecedentes completos</span>

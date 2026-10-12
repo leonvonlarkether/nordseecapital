@@ -29,7 +29,7 @@ export function HomeHero() {
           poster="/images/home/hero-video-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover object-[center_65%] pointer-events-none"
         >
-          <source src="/video/caballos.mp4" type="video/mp4" />
+          <source src="/video/caballos2.mp4" type="video/mp4" />
         </video>
 
         {/* Gradiente transparente a oscuro muy suave y natural solo en el flanco superior/izquierdo:

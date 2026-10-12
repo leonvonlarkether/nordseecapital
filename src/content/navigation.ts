@@ -43,7 +43,6 @@ export const mainNav: NavItem[] = [
       },
     ],
   },
-  { label: "Equipo", href: "/equipo" },
   { label: "Contacto", href: "/contacto" },
 ];
 
@@ -58,7 +57,7 @@ export const footerNav = {
   ],
   institucional: [
     { label: "Nosotros", href: "/nosotros" },
-    { label: "Equipo Directivo", href: "/equipo" },
+    { label: "Equipo Directivo", href: "/nosotros#equipo" },
     { label: "Contacto", href: "/contacto" },
     { label: "Privacidad & Legal", href: "/privacidad" },
   ],
