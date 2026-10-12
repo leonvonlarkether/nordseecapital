@@ -16,7 +16,7 @@ export function HomeCtaSection() {
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mx-auto text-center space-y-8">
           <Badge variant="dark">Contacto Institucional</Badge>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F5] font-normal tracking-tight leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F5] font-normal tracking-tight leading-tight text-balance">
             Conversemos sobre la estructura óptima para sus inversiones.
           </h2>
 
@@ -29,23 +29,23 @@ export function HomeCtaSection() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Button href="/contacto" variant="gold" size="lg">
               <span>Iniciar Consulta Confidencial</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+              <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
             </Button>
           </div>
 
-          <div className="pt-10 border-t border-white/10 flex flex-wrap items-center justify-center gap-8 text-sm text-[#FAF9F5]/70">
+          <div className="pt-10 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-[#FAF9F5]/70">
             <a
               href={`mailto:${siteConfig.email}`}
-              className="flex items-center gap-2 hover:text-[#C5A059] transition-colors"
+              className="inline-flex items-center gap-2 hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
             >
-              <Mail className="w-4 h-4 text-[#C5A059]" />
+              <Mail className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
               <span>{siteConfig.email}</span>
             </a>
             <a
               href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2 hover:text-[#C5A059] transition-colors"
+              className="inline-flex items-center gap-2 hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
             >
-              <Phone className="w-4 h-4 text-[#C5A059]" />
+              <Phone className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
               <span>{siteConfig.phone}</span>
             </a>
           </div>

@@ -14,7 +14,7 @@ export function HomeTeamSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <ScrollReveal direction="up" delay={50} className="max-w-2xl">
             <Badge variant="gold">Liderazgo Corporativo</Badge>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight text-balance">
               Equipo directivo con experiencia comprobada.
             </h2>
             <p className="text-base text-[#5D6A7E] mt-3">
@@ -27,10 +27,10 @@ export function HomeTeamSection() {
           <ScrollReveal direction="left" delay={150}>
             <Link
               href="/nosotros#equipo"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group shrink-0"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group shrink-0 py-2 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
             >
               <span>Ver antecedentes completos</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </ScrollReveal>
         </div>

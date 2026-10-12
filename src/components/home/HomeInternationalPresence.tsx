@@ -12,7 +12,7 @@ export function HomeInternationalPresence() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <ScrollReveal direction="left" delay={50} className="lg:col-span-5 space-y-6">
             <Badge variant="light">Alcance Geográfico</Badge>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight text-balance">
               Presencia operativa y alianzas en tres mercados estratégicos.
             </h2>
             <p className="text-base text-[#4B5565] leading-relaxed">
@@ -27,7 +27,7 @@ export function HomeInternationalPresence() {
               </span>
               {siteConfig.offices.map((office) => (
                 <div key={office.city} className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                   <div>
                     <span className="text-xs font-bold text-[#0B192C]">
                       {office.city}:{" "}
@@ -52,7 +52,7 @@ export function HomeInternationalPresence() {
                 <div className="bg-white rounded-2xl p-6 sm:p-7 border border-black/5 shadow-xs flex flex-col justify-between h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                   <div>
                     <div className="w-9 h-9 rounded-xl bg-[#0B192C] text-[#C5A059] flex items-center justify-center mb-5">
-                      <Globe2 className="w-4 h-4" />
+                      <Globe2 className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <h3 className="font-serif text-lg text-[#0B192C] font-normal mb-2">
                       {item.region}

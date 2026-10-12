@@ -70,12 +70,12 @@ export default function NosotrosPage() {
           {/* Breadcrumbs */}
           <nav
             aria-label="Ruta de navegación"
-            className="flex items-center gap-1.5 text-xs text-[#738094] mb-8 font-medium"
+            className="flex items-center gap-1.5 text-xs text-[#526071] mb-8 font-medium"
           >
-            <Link href="/" className="hover:text-[#C5A059] transition-colors">
+            <Link href="/" className="hover:text-[#C5A059] transition-colors py-1">
               Inicio
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#A88340]" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#A88340]" aria-hidden="true" />
             <span className="text-[#0B192C]" aria-current="page">
               Nosotros
             </span>
@@ -85,7 +85,7 @@ export default function NosotrosPage() {
             {/* Columna Textual del Hero */}
             <div className="lg:col-span-6 space-y-6">
               <Badge variant="gold">Identidad Corporativa</Badge>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0B192C] font-normal tracking-tight leading-[1.08]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0B192C] font-normal tracking-tight leading-[1.08] text-balance">
                 Un puente sólido entre patrimonio, negocios y rigor legal.
               </h1>
               <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed">
@@ -97,7 +97,7 @@ export default function NosotrosPage() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Button href="#equipo" variant="primary" size="md">
                   <span>Conocer a los Socios</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Button>
                 <Button href="/contacto" variant="ghost" size="md">
                   Iniciar Contacto
@@ -277,7 +277,7 @@ export default function NosotrosPage() {
                   </p>
 
                   <div className="flex items-start gap-2 text-xs text-[#738094] mb-6 pb-6 border-b border-black/5">
-                    <GraduationCap className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+                    <GraduationCap className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="font-medium italic">{member.credentials}</span>
                   </div>
 
@@ -311,7 +311,7 @@ export default function NosotrosPage() {
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059] block">
                 Atención Boutique y Sin Intermediarios
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#FAF9F5] font-normal tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#FAF9F5] font-normal tracking-tight text-balance">
                 Acceso directo al equipo directivo en cada decisión.
               </h3>
               <p className="text-sm sm:text-base text-[#F8F9FA]/75 leading-relaxed">
@@ -322,7 +322,7 @@ export default function NosotrosPage() {
               <div className="pt-4 flex flex-wrap justify-center gap-4">
                 <Button href="/contacto" variant="gold" size="md">
                   <span>Coordinar Reunión con los Socios</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Button>
               </div>
             </div>

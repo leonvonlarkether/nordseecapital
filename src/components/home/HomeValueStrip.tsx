@@ -33,7 +33,7 @@ export function HomeValueStrip() {
                 index !== 0 ? "md:border-l md:border-white/10 md:pl-8 lg:pl-10" : ""
               }`}
             >
-              <span className="font-serif text-2xl sm:text-3xl text-[#C5A059] font-normal shrink-0 leading-none mt-0.5">
+              <span className="font-serif text-2xl sm:text-3xl text-[#C5A059] font-normal shrink-0 leading-none mt-0.5 tabular-nums">
                 {v.num}
               </span>
               <div className="space-y-1">

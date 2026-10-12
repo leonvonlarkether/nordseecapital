@@ -11,9 +11,9 @@ export function Footer() {
     <footer className="bg-[#0B192C] text-[#FAF9F5] border-t border-white/10 pt-16 sm:pt-20 pb-12">
       <Container>
         {/* Grilla principal */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14 border-b border-white/10">
-          {/* Columna Marca e Identidad (2 cols en lg) */}
-          <div className="lg:col-span-2 space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
+          {/* Columna Marca e Identidad (4 cols en lg) */}
+          <div className="lg:col-span-4 space-y-5">
             <BrandLogo variant="light" withTagline={true} />
             <p className="text-sm text-[#F8F9FA]/70 leading-relaxed max-w-sm">
               Socio estratégico en gestión patrimonial, proyectos inmobiliarios
@@ -23,13 +23,13 @@ export function Footer() {
 
             <div className="pt-2 space-y-2 text-xs text-[#FAF9F5]/80">
               <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   Santiago: Los Militares, Las Condes (Piso 21, Oficina 2101)
                 </span>
               </div>
               <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   Concepción: Bernardo O&apos;Higgins 241, Piso 9, Oficina 903
                 </span>
@@ -37,8 +37,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna Servicios */}
-          <div className="space-y-4">
+          {/* Columna Servicios (2 cols en lg) */}
+          <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A059]">
               Servicios
             </h4>
@@ -56,8 +56,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna Institucional */}
-          <div className="space-y-4">
+          {/* Columna Institucional (2 cols en lg) */}
+          <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A059]">
               Institucional
             </h4>
@@ -75,8 +75,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna Contacto Directo */}
-          <div className="space-y-4">
+          {/* Columna Contacto Directo (4 cols en lg) */}
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A059]">
               Canales Directos
             </h4>
@@ -84,19 +84,19 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2.5 text-[#FAF9F5]/70 hover:text-[#C5A059] transition-colors"
+                  className="inline-flex items-center gap-2.5 text-[#FAF9F5]/70 hover:text-[#C5A059] transition-colors py-1 min-h-[36px] sm:min-h-[44px] focus-visible:ring-1 focus-visible:ring-[#C5A059] rounded-xs"
                 >
-                  <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span className="break-all">{siteConfig.email}</span>
+                  <Mail className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
+                  <span className="whitespace-nowrap">{siteConfig.email}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-2.5 text-[#FAF9F5]/70 hover:text-[#C5A059] transition-colors"
+                  className="inline-flex items-center gap-2.5 text-[#FAF9F5]/70 hover:text-[#C5A059] transition-colors py-1 min-h-[36px] sm:min-h-[44px] focus-visible:ring-1 focus-visible:ring-[#C5A059] rounded-xs"
                 >
-                  <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span>{siteConfig.phone}</span>
+                  <Phone className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
+                  <span className="whitespace-nowrap">{siteConfig.phone}</span>
                 </a>
               </li>
             </ul>

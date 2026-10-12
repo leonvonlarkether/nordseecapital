@@ -33,7 +33,7 @@ export function HomeApproachSection() {
       <Container className="relative z-10">
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
           <Badge variant="dark">Filosofía de Trabajo</Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#FAF9F5] font-normal tracking-tight mt-4 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#FAF9F5] font-normal tracking-tight mt-4 leading-tight text-balance">
             Gestión disciplinada del riesgo y preservación de capital.
           </h2>
           <p className="text-base sm:text-lg text-[#F8F9FA]/70 mt-4 leading-relaxed">
@@ -56,11 +56,11 @@ export function HomeApproachSection() {
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-[#C5A059]/40 transition-all duration-300 group h-full flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-8">
-                      <span className="font-serif text-3xl text-[#C5A059] font-normal">
+                      <span className="font-serif text-3xl text-[#C5A059] font-normal tabular-nums">
                         {step.num}
                       </span>
                       <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#C5A059] group-hover:scale-110 transition-transform">
-                        <Icon className="w-5 h-5" />
+                        <Icon className="w-5 h-5" aria-hidden="true" />
                       </div>
                     </div>
 

@@ -53,7 +53,7 @@ export function ServiceDetailPage({
             {/* Columna Principal: Descripción */}
             <div className="lg:col-span-7 space-y-6">
               <Badge variant="gold">Visión del Servicio</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight text-balance">
                 {service.summary}
               </h2>
 
@@ -74,7 +74,7 @@ export function ServiceDetailPage({
                       key={idx}
                       className="bg-white p-4 rounded-xl border border-black/5 flex items-start gap-3 shadow-2xs"
                     >
-                      <CheckCircle2 className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                       <span className="text-sm font-medium text-[#151B26]">
                         {need}
                       </span>
@@ -161,16 +161,16 @@ export function ServiceDetailPage({
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <Badge variant="light">Exploración Complementaria</Badge>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#0B192C] font-normal tracking-tight mt-2">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#0B192C] font-normal tracking-tight mt-2 text-balance">
                 Otras áreas de especialización
               </h2>
             </div>
             <Link
               href="/servicios"
-              className="text-xs font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors inline-flex items-center gap-1"
+              className="text-xs font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors inline-flex items-center gap-1 py-1"
             >
               <span>Ver todas las áreas</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </Link>
           </div>
 

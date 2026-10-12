@@ -18,12 +18,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 ease-out will-change-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center font-medium rounded-full transition-[transform,color,background-color,border-color,box-shadow,opacity] duration-200 ease-out will-change-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] disabled:opacity-50 disabled:pointer-events-none select-none";
 
   const sizeStyles = {
-    sm: "text-xs px-4 py-2 gap-1.5",
-    md: "text-sm px-6 py-3 gap-2",
-    lg: "text-base px-8 py-4 gap-2.5",
+    sm: "text-xs px-4 py-2.5 min-h-[44px] gap-1.5",
+    md: "text-sm px-6 py-3 min-h-[44px] gap-2",
+    lg: "text-base px-8 py-4 min-h-[48px] gap-2.5",
   };
 
   const variantStyles = {

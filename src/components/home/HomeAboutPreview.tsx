@@ -60,7 +60,7 @@ export function HomeAboutPreview() {
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-6">
             <ScrollReveal direction="up" delay={100}>
               <Badge variant="light">Identidad y Enfoque</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight mt-3">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight mt-3 text-balance">
                 Un socio estratégico que integra capital, negocios y estructura jurídica.
               </h2>
               <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed mt-4">
@@ -77,7 +77,7 @@ export function HomeAboutPreview() {
               {highlights.map((item, idx) => (
                 <ScrollReveal key={idx} delay={200 + idx * 80} direction="up">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm font-medium text-[#151B26]">
                       {item}
                     </span>
@@ -89,10 +89,10 @@ export function HomeAboutPreview() {
             <ScrollReveal delay={550} direction="up" className="pt-4">
               <Link
                 href="/nosotros"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group py-2 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
               >
                 <span>Conocer nuestra filosofía y equipo</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </ScrollReveal>
           </div>

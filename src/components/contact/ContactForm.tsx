@@ -88,7 +88,7 @@ export function ContactForm() {
     return (
       <div className="bg-[#FAF9F5] border border-[#C5A059]/30 rounded-3xl p-8 sm:p-10 text-center space-y-4 shadow-sm">
         <div className="w-14 h-14 rounded-full bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center mx-auto">
-          <CheckCircle2 className="w-8 h-8" />
+          <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
         </div>
         <h3 className="font-serif text-2xl text-[#0B192C]">
           Consulta Recibida Exitosamente
@@ -101,7 +101,7 @@ export function ContactForm() {
         <div className="pt-2">
           <button
             onClick={() => setStatus("idle")}
-            className="text-xs font-semibold text-[#0B192C] underline hover:text-[#C5A059] transition-colors"
+            className="text-xs font-semibold text-[#0B192C] underline hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] inline-flex items-center"
           >
             Enviar otra consulta
           </button>
@@ -143,6 +143,7 @@ export function ContactForm() {
             type="text"
             name="nombre"
             required
+            autoComplete="name"
             value={formData.nombre}
             onChange={handleChange}
             placeholder="Ej. Constanza Silva"
@@ -162,6 +163,8 @@ export function ContactForm() {
             type="email"
             name="email"
             required
+            autoComplete="email"
+            spellCheck={false}
             value={formData.email}
             onChange={handleChange}
             placeholder="nombre@empresa.com"
@@ -182,6 +185,7 @@ export function ContactForm() {
             id="telefono"
             type="tel"
             name="telefono"
+            autoComplete="tel"
             value={formData.telefono}
             onChange={handleChange}
             placeholder="+56 9 1234 5678"
@@ -228,14 +232,18 @@ export function ContactForm() {
           required
           value={formData.mensaje}
           onChange={handleChange}
-          placeholder="Describa brevemente el objetivo o contexto de su consulta..."
+          placeholder="Describa brevemente el objetivo o contexto de su consulta…"
           className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5] resize-y"
         />
       </div>
 
       {status === "error" && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs leading-relaxed">
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
+        <div
+          role="alert"
+          aria-live="polite"
+          className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs leading-relaxed"
+        >
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" aria-hidden="true" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -246,17 +254,17 @@ export function ContactForm() {
           variant="primary"
           size="md"
           disabled={status === "submitting"}
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto min-h-[44px]"
         >
           {status === "submitting" ? (
             <>
-              <Loader2 className="w-4 h-4 animate-spin mr-2" />
-              <span>Enviando consulta...</span>
+              <Loader2 className="w-4 h-4 animate-spin mr-2" aria-hidden="true" />
+              <span>Enviando consulta…</span>
             </>
           ) : (
             <>
               <span>Enviar Consulta</span>
-              <Send className="w-4 h-4 ml-1.5" />
+              <Send className="w-4 h-4 ml-1.5" aria-hidden="true" />
             </>
           )}
         </Button>

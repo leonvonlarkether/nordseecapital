@@ -74,7 +74,7 @@ export function ScrollReveal({
         transitionDelay: `${delay}ms`,
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
       }}
-      className={`transition-all ${
+      className={`transition-[opacity,transform] will-change-[opacity,transform] ${
         isVisible
           ? "opacity-100"
           : "opacity-0 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:translate-x-0"

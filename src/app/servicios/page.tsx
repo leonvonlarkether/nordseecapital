@@ -40,7 +40,7 @@ export default function ServiciosGeneralPage() {
         <Container>
           <div className="max-w-3xl mb-16 space-y-4">
             <Badge variant="gold">Visión Integral</Badge>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#0B192C] font-normal tracking-tight leading-tight text-balance">
               La ventaja de una asesoría multidisciplinaria sin silos.
             </h2>
             <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed">
@@ -62,7 +62,7 @@ export default function ServiciosGeneralPage() {
                 <div
                   key={service.slug}
                   id={service.slug}
-                  className="bg-white rounded-3xl p-8 sm:p-12 border border-black/5 shadow-xs hover:border-[#C5A059]/40 transition-all duration-300 overflow-hidden"
+                  className="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-12 border border-black/5 shadow-xs hover:border-[#C5A059]/40 transition-all duration-300 overflow-hidden"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     <div className="lg:col-span-5 space-y-5">

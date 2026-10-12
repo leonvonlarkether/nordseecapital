@@ -76,6 +76,7 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${serifDisplay.variable} ${sansBody.variable} scroll-smooth`}
+      data-scroll-behavior="smooth"
     >
       <head>
         <JsonLd />

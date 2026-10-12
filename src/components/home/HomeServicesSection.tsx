@@ -19,11 +19,11 @@ const serviceImages: Record<string, string> = {
 
 export function HomeServicesSection() {
   return (
-    <section className="py-24 sm:py-32 bg-[#FAF9F5]" id="servicios">
+    <section className="py-24 sm:py-32 bg-[#FAF9F5] scroll-mt-24" id="servicios">
       <Container>
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mb-14 sm:mb-20">
           <Badge variant="gold">Áreas de Especialización</Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight text-balance">
             Estructuras sólidas para cada dimensión del capital.
           </h2>
           <p className="text-base sm:text-lg text-[#5D6A7E] mt-4">
@@ -45,7 +45,7 @@ export function HomeServicesSection() {
                 direction="up"
                 className="h-full"
               >
-                <article className="group bg-white rounded-3xl overflow-hidden border border-black/5 hover:border-[#C5A059]/50 shadow-xs hover:shadow-2xl hover:shadow-[#0B192C]/8 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between h-full">
+                <article className="relative group bg-white rounded-3xl overflow-hidden border border-black/5 hover:border-[#C5A059]/50 shadow-xs hover:shadow-2xl hover:shadow-[#0B192C]/8 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between h-full">
                   <div>
                     {/* Ventana fotográfica arquitectónica */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-[#0B192C]/5">
@@ -99,10 +99,10 @@ export function HomeServicesSection() {
                   <div className="px-7 sm:px-8 pb-7 sm:pb-8 pt-4 border-t border-black/5 bg-[#FAF9F5]/40 flex items-center justify-between">
                     <Link
                       href={`/servicios/${service.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B192C] group-hover:text-[#C5A059] transition-colors"
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B192C] group-hover:text-[#C5A059] transition-colors after:absolute after:inset-0 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:rounded-3xl"
                     >
                       <span>Ver detalle del servicio</span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C5A059]" />
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C5A059]" aria-hidden="true" />
                     </Link>
                     <span className="text-[11px] text-[#738094] group-hover:text-[#0B192C] transition-colors">
                       Nordsee

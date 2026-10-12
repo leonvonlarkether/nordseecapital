@@ -100,22 +100,22 @@ export default function ContactoPage() {
                 <div className="space-y-3 text-sm">
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors"
+                    className="inline-flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
                   >
-                    <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <Mail className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
                     <span>{siteConfig.email}</span>
                   </a>
 
                   <a
                     href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                    className="flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors"
+                    className="inline-flex items-center gap-3 text-[#FAF9F5]/85 hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
                   >
-                    <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <Phone className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
                     <span>{siteConfig.phone}</span>
                   </a>
 
                   <div className="flex items-center gap-3 text-xs text-[#FAF9F5]/60 pt-2 border-t border-white/10">
-                    <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
+                    <Clock className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
                     <span>Horario de atención: Lunes a Viernes, 09:00 a 18:30 (CLT)</span>
                   </div>
                 </div>
