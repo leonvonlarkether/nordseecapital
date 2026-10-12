@@ -2,14 +2,17 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle2, AlertCircle, Send, Loader2 } from "lucide-react";
+import { CheckCircle2, AlertCircle, Send, Loader2, ShieldCheck, MapPin, Video } from "lucide-react";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
     nombre: "",
+    organizacion: "",
     email: "",
     telefono: "",
-    servicio: "general",
+    servicio: "wealth-management",
+    modalidad: "santiago",
+    rangoPatrimonio: "",
     mensaje: "",
     honeypot: "", // Campo señuelo antispam
   });
@@ -30,6 +33,10 @@ export function ContactForm() {
     });
   };
 
+  const handleModalidadChange = (modalidad: string) => {
+    setFormData((prev) => ({ ...prev, modalidad }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -40,10 +47,10 @@ export function ContactForm() {
       return;
     }
 
-    // Validación básica de campos
+    // Validación básica de campos requeridos
     if (!formData.nombre.trim() || !formData.email.trim() || !formData.mensaje.trim()) {
       setStatus("error");
-      setErrorMessage("Por favor complete todos los campos obligatorios.");
+      setErrorMessage("Por favor complete los campos obligatorios marcados con asterisco (*).");
       return;
     }
 
@@ -63,9 +70,12 @@ export function ContactForm() {
         setStatus("success");
         setFormData({
           nombre: "",
+          organizacion: "",
           email: "",
           telefono: "",
-          servicio: "general",
+          servicio: "wealth-management",
+          modalidad: "santiago",
+          rangoPatrimonio: "",
           mensaje: "",
           honeypot: "",
         });
@@ -73,35 +83,42 @@ export function ContactForm() {
         setStatus("error");
         setErrorMessage(
           data.message ||
-            "No fue posible enviar su consulta en este momento. Por favor contáctenos directamente a contacto@nordseecapital.com"
+          "No fue posible procesar su consulta en este momento. Por favor escríbanos directamente a contacto@nordseecapital.com"
         );
       }
     } catch {
       setStatus("error");
       setErrorMessage(
-        "Ocurrió una incidencia de conexión. Por favor escríbanos directamente a contacto@nordseecapital.com o llámenos al +56 9 6667 4099."
+        "Ocurrió una incidencia de conexión. Por favor escríbanos a contacto@nordseecapital.com o llámenos al +56 9 6667 4099."
       );
     }
   };
 
   if (status === "success") {
     return (
-      <div className="bg-[#FAF9F5] border border-[#C5A059]/30 rounded-3xl p-8 sm:p-10 text-center space-y-4 shadow-sm">
-        <div className="w-14 h-14 rounded-full bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center mx-auto">
-          <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
+      <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#C5A059]/40 text-center space-y-6 shadow-lg shadow-black/5">
+        <div className="w-16 h-16 rounded-full bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center mx-auto ring-8 ring-[#C5A059]/10">
+          <CheckCircle2 className="w-9 h-9" aria-hidden="true" />
         </div>
-        <h3 className="font-serif text-2xl text-[#0B192C]">
-          Consulta Recibida Exitosamente
-        </h3>
-        <p className="text-sm text-[#4B5565] max-w-md mx-auto leading-relaxed">
-          Agradecemos su interés en Nordsee Capital. Nuestro equipo revisará su
-          requerimiento de manera confidencial y un socio se pondrá en contacto a
-          la brevedad.
+        <div className="space-y-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
+            Registro Fiduciario Confirmado
+          </span>
+          <h3 className="font-serif text-2xl sm:text-3xl text-[#0B192C]">
+            Consulta Recibida con Éxito
+          </h3>
+        </div>
+        <p className="text-sm sm:text-base text-[#4B5565] max-w-lg mx-auto leading-relaxed">
+          Su requerimiento ha sido ingresado en nuestra mesa de atención privada. Uno de nuestros socios directores revisará los antecedentes y se pondrá en contacto en un plazo máximo de 24 horas hábiles.
         </p>
+        <div className="p-4 rounded-xl bg-[#FAF9F5] border border-black/5 max-w-md mx-auto text-xs text-[#738094] flex items-center justify-center gap-2">
+          <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+          <span>Toda la información remitida está amparada bajo estricto secreto profesional.</span>
+        </div>
         <div className="pt-2">
           <button
             onClick={() => setStatus("idle")}
-            className="text-xs font-semibold text-[#0B192C] underline hover:text-[#C5A059] transition-colors py-2 px-3 min-h-[44px] inline-flex items-center"
+            className="text-xs font-semibold uppercase tracking-wider text-[#0B192C] hover:text-[#C5A059] underline underline-offset-4 transition-colors py-2 px-4 min-h-[44px] inline-flex items-center"
           >
             Enviar otra consulta
           </button>
@@ -111,168 +128,238 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white rounded-3xl p-8 sm:p-10 border border-black/5 shadow-xs space-y-6"
-      noValidate
-    >
-      {/* Campo señuelo honeypot oculto para bots */}
-      <div className="hidden" aria-hidden="true">
-        <label htmlFor="form-honeypot">No complete este campo</label>
-        <input
-          id="form-honeypot"
-          type="text"
-          name="honeypot"
-          value={formData.honeypot}
-          onChange={handleChange}
-          tabIndex={-1}
-          autoComplete="off"
-        />
+    <div className="bg-white rounded-3xl p-7 sm:p-10 lg:p-12 border border-black/8 shadow-xl shadow-black/[0.04]">
+      {/* Encabezado del Formulario */}
+      <div className="border-b border-black/8 pb-6 mb-8">
+        <div className="flex items-center justify-between gap-4 mb-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
+            Mesa de Admisión &amp; Consulta
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF9F5] border border-[#C5A059]/30 text-[11px] font-medium text-[#0B192C]">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
+            Reserva Fiduciaria
+          </span>
+        </div>
+        <h2 className="font-serif text-2xl sm:text-3xl text-[#0B192C] font-normal tracking-tight">
+          Formulario de Consulta Estratégica
+        </h2>
+        <p className="text-xs sm:text-sm text-[#4B5565] mt-1.5 leading-relaxed">
+          Complete los campos a continuación para derivar su caso al socio especialista correspondiente.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label
-            htmlFor="nombre"
-            className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
-          >
-            Nombre Completo <span className="text-[#C5A059]">*</span>
-          </label>
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+        {/* Campo señuelo honeypot antispam */}
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="form-honeypot">No complete este campo</label>
           <input
-            id="nombre"
+            id="form-honeypot"
             type="text"
-            name="nombre"
+            name="honeypot"
+            value={formData.honeypot}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
+        {/* Fila 1: Nombre Completo & Organización / Cargo */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div>
+            <label
+              htmlFor="nombre"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+            >
+              Nombre Completo <span className="text-[#C5A059]">*</span>
+            </label>
+            <input
+              id="nombre"
+              type="text"
+              name="nombre"
+              required
+              autoComplete="name"
+              value={formData.nombre}
+              onChange={handleChange}
+              placeholder="Ej. Constanza Silva"
+              className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="organizacion"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+            >
+              Organización / Family Office <span className="text-xs text-[#738094] lowercase font-normal">(opcional)</span>
+            </label>
+            <input
+              id="organizacion"
+              type="text"
+              name="organizacion"
+              autoComplete="organization"
+              value={formData.organizacion}
+              onChange={handleChange}
+              placeholder="Ej. Inversiones San Gabriel / Directora"
+              className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
+            />
+          </div>
+        </div>
+
+        {/* Fila 2: Correo Electrónico & Teléfono */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+            >
+              Correo Electrónico <span className="text-[#C5A059]">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              autoComplete="email"
+              spellCheck={false}
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="nombre@empresa.com"
+              className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="telefono"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+            >
+              Teléfono de Contacto
+            </label>
+            <input
+              id="telefono"
+              type="tel"
+              name="telefono"
+              autoComplete="tel"
+              value={formData.telefono}
+              onChange={handleChange}
+              placeholder="+56 9 1234 5678"
+              className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
+            />
+          </div>
+        </div>
+
+        {/* Fila 3: Modalidad Preferida de Reunión */}
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2.5">
+            Preferencia de Reunión Inicial
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button
+              type="button"
+              onClick={() => handleModalidadChange("santiago")}
+              className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-xs font-medium transition-all text-left ${formData.modalidad === "santiago"
+                ? "bg-[#0B192C] text-white border-[#0B192C] shadow-sm"
+                : "bg-[#FAF9F5] text-[#4B5565] border-black/10 hover:border-[#C5A059]"
+                }`}
+            >
+              <MapPin className={`w-4 h-4 shrink-0 ${formData.modalidad === "santiago" ? "text-[#C5A059]" : "text-[#738094]"}`} />
+              <div className="truncate">
+                <span className="block font-semibold">Santiago</span>
+                <span className="text-[10px] opacity-75">Las Condes (Piso 21)</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleModalidadChange("concepcion")}
+              className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-xs font-medium transition-all text-left ${formData.modalidad === "concepcion"
+                ? "bg-[#0B192C] text-white border-[#0B192C] shadow-sm"
+                : "bg-[#FAF9F5] text-[#4B5565] border-black/10 hover:border-[#C5A059]"
+                }`}
+            >
+              <MapPin className={`w-4 h-4 shrink-0 ${formData.modalidad === "concepcion" ? "text-[#C5A059]" : "text-[#738094]"}`} />
+              <div className="truncate">
+                <span className="block font-semibold">Concepción</span>
+                <span className="text-[10px] opacity-75">O&apos;Higgins 241 (Piso 9)</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleModalidadChange("virtual")}
+              className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-xs font-medium transition-all text-left ${formData.modalidad === "virtual"
+                ? "bg-[#0B192C] text-white border-[#0B192C] shadow-sm"
+                : "bg-[#FAF9F5] text-[#4B5565] border-black/10 hover:border-[#C5A059]"
+                }`}
+            >
+              <Video className={`w-4 h-4 shrink-0 ${formData.modalidad === "virtual" ? "text-[#C5A059]" : "text-[#738094]"}`} />
+              <div className="truncate">
+                <span className="block font-semibold">Sesión Virtual</span>
+                <span className="text-[10px] opacity-75">Videoconferencia Segura</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Fila 5: Mensaje o Detalle */}
+        <div>
+          <label
+            htmlFor="mensaje"
+            className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+          >
+            Detalle o Contexto de la Consulta <span className="text-[#C5A059]">*</span>
+          </label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows={4}
             required
-            autoComplete="name"
-            value={formData.nombre}
+            value={formData.mensaje}
             onChange={handleChange}
-            placeholder="Ej. Constanza Silva"
-            className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5]"
+            placeholder="Describa el objetivo o contexto de su requerimiento (ej. diversificación transfronteriza de cartera, estructuración de vehículo corporativo, financiamiento de proyecto)…"
+            className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70 resize-y"
           />
         </div>
 
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+        {status === "error" && (
+          <div
+            role="alert"
+            aria-live="polite"
+            className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs leading-relaxed"
           >
-            Correo Electrónico <span className="text-[#C5A059]">*</span>
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            autoComplete="email"
-            spellCheck={false}
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="nombre@empresa.com"
-            className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5]"
-          />
-        </div>
-      </div>
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" aria-hidden="true" />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label
-            htmlFor="telefono"
-            className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
+        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-black/8">
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            disabled={status === "submitting"}
+            className="w-full sm:w-auto min-h-[48px] px-8 text-sm font-semibold tracking-wide shadow-md"
           >
-            Teléfono de Contacto
-          </label>
-          <input
-            id="telefono"
-            type="tel"
-            name="telefono"
-            autoComplete="tel"
-            value={formData.telefono}
-            onChange={handleChange}
-            placeholder="+56 9 1234 5678"
-            className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5]"
-          />
+            {status === "submitting" ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin mr-2" aria-hidden="true" />
+                <span>Transmitiendo antecedentes…</span>
+              </>
+            ) : (
+              <>
+                <span>Coordinar Conversación Estratégica</span>
+                <Send className="w-4 h-4 ml-2" aria-hidden="true" />
+              </>
+            )}
+          </Button>
+
+          <div className="flex items-center gap-2 text-[11px] text-[#738094]">
+            <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+            <span>Protocolo bajo secreto profesional y acuerdos de no divulgación.</span>
+          </div>
         </div>
-
-        <div>
-          <label
-            htmlFor="servicio"
-            className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
-          >
-            Área de Interés Principal
-          </label>
-          <select
-            id="servicio"
-            name="servicio"
-            value={formData.servicio}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5]"
-          >
-            <option value="general">Consulta General Institucional</option>
-            <option value="real-estate">Real Estate &amp; Desarrollo Inmobiliario</option>
-            <option value="wealth-management">Wealth Management &amp; Gestión Patrimonial</option>
-            <option value="deuda-privada">Deuda Privada &amp; Financiamiento Estructurado</option>
-            <option value="ma">M&amp;A: Fusiones y Adquisiciones</option>
-            <option value="tax-legal">Tax &amp; Legal: Planificación Legal/Tributaria</option>
-            <option value="golden-visa">Golden Visa Portugal (Residencia por Inversión)</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label
-          htmlFor="mensaje"
-          className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
-        >
-          Mensaje o Detalle de la Consulta <span className="text-[#C5A059]">*</span>
-        </label>
-        <textarea
-          id="mensaje"
-          name="mensaje"
-          rows={4}
-          required
-          value={formData.mensaje}
-          onChange={handleChange}
-          placeholder="Describa brevemente el objetivo o contexto de su consulta…"
-          className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] transition-all bg-[#FAF9F5] resize-y"
-        />
-      </div>
-
-      {status === "error" && (
-        <div
-          role="alert"
-          aria-live="polite"
-          className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-red-800 text-xs leading-relaxed"
-        >
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" aria-hidden="true" />
-          <span>{errorMessage}</span>
-        </div>
-      )}
-
-      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <Button
-          type="submit"
-          variant="primary"
-          size="md"
-          disabled={status === "submitting"}
-          className="w-full sm:w-auto min-h-[44px]"
-        >
-          {status === "submitting" ? (
-            <>
-              <Loader2 className="w-4 h-4 animate-spin mr-2" aria-hidden="true" />
-              <span>Enviando consulta…</span>
-            </>
-          ) : (
-            <>
-              <span>Enviar Consulta</span>
-              <Send className="w-4 h-4 ml-1.5" aria-hidden="true" />
-            </>
-          )}
-        </Button>
-
-        <span className="text-[11px] text-[#738094]">
-          Información tratada bajo estricta reserva y confidencialidad.
-        </span>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
+

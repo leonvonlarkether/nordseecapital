@@ -2,9 +2,12 @@ import { NextResponse } from "next/server";
 
 interface ContactRequestBody {
   nombre?: string;
+  organizacion?: string;
   email?: string;
   telefono?: string;
   servicio?: string;
+  modalidad?: string;
+  rangoPatrimonio?: string;
   mensaje?: string;
   honeypot?: string;
 }
