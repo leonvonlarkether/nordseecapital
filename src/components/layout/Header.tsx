@@ -41,16 +41,20 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
+  const isDarkHero = pathname === "/" && !isScrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FAF9F5]/90 backdrop-blur-md py-3.5 border-b border-black/5 shadow-xs"
-          : "bg-transparent py-5 sm:py-6"
+          ? "bg-[#FAF9F5]/95 backdrop-blur-md py-3.5 border-b border-black/5 shadow-xs text-[#0B192C]"
+          : isDarkHero
+          ? "bg-transparent py-4 sm:py-5 text-white"
+          : "bg-[#FAF9F5]/60 backdrop-blur-md py-4 sm:py-5 border-b border-black/5 text-[#0B192C]"
       }`}
     >
       <Container className="flex items-center justify-between">
-        <BrandLogo variant="dark" />
+        <BrandLogo variant={isDarkHero ? "light" : "dark"} />
 
         {/* Navegación Desktop */}
         <nav
@@ -77,7 +81,11 @@ export function Header() {
                     }
                     className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-colors cursor-pointer ${
                       isActive
-                        ? "text-[#0B192C] font-semibold"
+                        ? isDarkHero
+                          ? "text-white font-semibold"
+                          : "text-[#0B192C] font-semibold"
+                        : isDarkHero
+                        ? "text-white/85 hover:text-white"
                         : "text-[#323C4D] hover:text-[#0B192C]"
                     }`}
                     aria-expanded={servicesDropdownOpen}
@@ -87,14 +95,14 @@ export function Header() {
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-200 ${
                         servicesDropdownOpen ? "rotate-180" : ""
-                      }`}
+                      } text-[#C5A059]`}
                     />
                   </button>
 
                   {/* Mega-menú desplegable de servicios */}
                   {servicesDropdownOpen && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[480px] z-50">
-                      <div className="bg-[#FAF9F5] border border-black/10 rounded-2xl p-4 shadow-xl shadow-black/10 backdrop-blur-md">
+                      <div className="bg-[#FAF9F5] border border-black/10 rounded-2xl p-4 shadow-xl shadow-black/10 backdrop-blur-md text-[#0B192C]">
                         <div className="text-xs font-semibold tracking-wider text-[#738094] uppercase px-3 py-1 mb-2 border-b border-black/5 flex items-center justify-between">
                           <span>Áreas de Especialización</span>
                           <Link
@@ -116,7 +124,7 @@ export function Header() {
                                 <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#C5A059]" />
                               </span>
                               {child.description && (
-                                <span className="text-xs text-[#5D6A7E] mt-0.5 line-clamp-1">
+                                <span className="text-xs text-[#5D6A7E] mt-0.5 leading-snug">
                                   {child.description}
                                 </span>
                               )}
@@ -136,7 +144,11 @@ export function Header() {
                 href={item.href}
                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
                   isActive
-                    ? "text-[#0B192C] font-semibold"
+                    ? isDarkHero
+                      ? "text-white font-semibold"
+                      : "text-[#0B192C] font-semibold"
+                    : isDarkHero
+                    ? "text-white/85 hover:text-white"
                     : "text-[#323C4D] hover:text-[#0B192C]"
                 }`}
               >
@@ -151,7 +163,11 @@ export function Header() {
 
         {/* CTA Desktop */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button href="/contacto" variant="primary" size="sm">
+          <Button
+            href="/contacto"
+            variant={isDarkHero ? "gold" : "primary"}
+            size="sm"
+          >
             Contactar
           </Button>
         </div>
@@ -159,7 +175,11 @@ export function Header() {
         {/* Botón hamburguesa móvil */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl text-[#0B192C] hover:bg-black/5 transition-colors"
+          className={`lg:hidden p-2 rounded-xl transition-colors ${
+            isDarkHero
+              ? "text-white hover:bg-white/10"
+              : "text-[#0B192C] hover:bg-black/5"
+          }`}
           aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={mobileMenuOpen}
         >
