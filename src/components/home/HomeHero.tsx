@@ -104,7 +104,7 @@ export function HomeHero() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#0B192C]/15 border border-black/10 group aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5]">
                 <Image
                   src="/images/home/hero-nordsee.jpg"
-                  alt="Arquitectura corporativa institucional de Nordsee Capital"
+                  alt="Arquitectura corporativa contemporánea — Imagen conceptual representativa de rigor institucional"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"

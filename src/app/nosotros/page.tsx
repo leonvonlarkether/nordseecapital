@@ -100,7 +100,7 @@ export default function NosotrosPage() {
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-2xl shadow-[#0B192C]/10 aspect-[4/3] group">
                 <Image
                   src="/images/about/atrium-corporate.jpg"
-                  alt="Espacio institucional y atrio corporativo de Nordsee Capital"
+                  alt="Atrio arquitectónico corporativo — Imagen conceptual de sobriedad institucional"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -114,7 +114,7 @@ export default function NosotrosPage() {
                     </span>
                   </div>
                   <p className="font-serif text-base text-white/95">
-                    Ambiente de confianza, sobriedad y análisis estratégico multidisciplinario.
+                    Ambiente de confianza, sobriedad y análisis estratégico multidisciplinario (imagen conceptual).
                   </p>
                 </div>
               </div>

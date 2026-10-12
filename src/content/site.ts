@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
     {
       city: "Santiago",
       country: "Chile",
-      address: "Los Militares (Piso 21, Of. 2101 — numeración 447 / 4777 sujeta a ratificación oficial)",
+      address: "Los Militares, Las Condes, Santiago (Piso 21, Oficina 2101)",
       office: "Piso 21, Oficina 2101",
       role: "Sede Corporativa Principal",
       status: "pending_confirmation",

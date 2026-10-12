@@ -70,7 +70,7 @@ export default function ServiciosGeneralPage() {
                       <div className="relative rounded-2xl overflow-hidden border border-black/10 aspect-[16/10] group">
                         <Image
                           src={imageSrc}
-                          alt={`Fotografía editorial de ${service.title}`}
+                          alt={`Fotografía conceptual de arquitectura para ${service.title}`}
                           fill
                           sizes="(max-width: 1024px) 100vw, 40vw"
                           className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

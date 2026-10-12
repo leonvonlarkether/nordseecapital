@@ -23,7 +23,7 @@ export function HomeAboutPreview() {
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-2xl shadow-[#0B192C]/10 aspect-[4/5] group">
                 <Image
                   src="/images/about/atrium-corporate.jpg"
-                  alt="Espacio corporativo y atrio institucional de Nordsee Capital"
+                  alt="Atrio arquitectónico corporativo — Imagen conceptual institucional"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"

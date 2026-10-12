@@ -47,7 +47,7 @@ export default function ContactoPage() {
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-lg aspect-[16/9] group">
                 <Image
                   src="/images/contact/santiago-corporate.jpg"
-                  alt="Fachada corporativa en Santiago de Chile"
+                  alt="Entorno corporativo en Las Condes, Santiago — Imagen referencial"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -55,10 +55,10 @@ export default function ContactoPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-black/20 pointer-events-none" />
                 <div className="absolute bottom-3 left-4 right-4 text-white pointer-events-none">
                   <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block">
-                    Sede Corporativa
+                    Ubicación Corporativa
                   </span>
                   <span className="font-serif text-sm text-white/95">
-                    Las Condes · Santiago de Chile
+                    Las Condes · Santiago de Chile (Referencial)
                   </span>
                 </div>
               </div>

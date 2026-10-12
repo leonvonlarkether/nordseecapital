@@ -25,7 +25,7 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
                 <span>
-                  Santiago: Los Militares (Piso 21, Of. 2101 · num. 447 / 4777 sujeta a ratificación)
+                  Santiago: Los Militares, Las Condes (Piso 21, Oficina 2101)
                 </span>
               </div>
               <div className="flex items-start gap-2">

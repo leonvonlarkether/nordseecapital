@@ -49,8 +49,7 @@ export default function PrivacidadPage() {
                 recopilados a través de este sitio web es{" "}
                 <strong className="text-[#0B192C]">{siteConfig.legalName}</strong>,
                 con domicilio corporativo en Los Militares (Piso 21, Oficina 2101,
-                Las Condes, Santiago, Chile — numeración 447 / 4777 sujeta a
-                ratificación registral oficial), y correo de contacto{" "}
+                Las Condes, Santiago, Chile), y correo de contacto{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="text-[#C5A059] underline font-medium"

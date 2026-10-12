@@ -90,7 +90,7 @@ export function ServiceDetailPage({
               <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-xl shadow-[#0B192C]/10 aspect-[16/10] sm:aspect-[4/3] group">
                 <Image
                   src={imageSrc}
-                  alt={`Arquitectura y contexto de ${service.title}`}
+                  alt={`Fotografía conceptual de arquitectura representativa del área de ${service.title}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -188,7 +188,7 @@ export function ServiceDetailPage({
                   <h3 className="font-serif text-lg text-[#0B192C] font-normal group-hover:text-[#C5A059] transition-colors mb-2">
                     {item.shortTitle}
                   </h3>
-                  <p className="text-xs text-[#5D6A7E] line-clamp-2">
+                  <p className="text-xs text-[#5D6A7E] leading-relaxed">
                     {item.summary}
                   </p>
                 </div>

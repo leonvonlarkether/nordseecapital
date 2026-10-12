@@ -47,7 +47,7 @@ export function HomeServicesSection() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-[#0B192C]/5">
                     <Image
                       src={imageSrc}
-                      alt={`Área de ${service.title} en Nordsee Capital`}
+                      alt={`Fotografía conceptual de arquitectura para el área de ${service.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -82,10 +82,10 @@ export function HomeServicesSection() {
                       {service.keyCapabilities.slice(0, 3).map((cap, i) => (
                         <div
                           key={i}
-                          className="text-xs text-[#232B3A] flex items-center gap-2"
+                          className="text-xs text-[#232B3A] flex items-start gap-2"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
-                          <span className="line-clamp-1">{cap}</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0 mt-1" />
+                          <span className="leading-snug">{cap}</span>
                         </div>
                       ))}
                     </div>
