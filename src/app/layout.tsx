@@ -3,6 +3,7 @@ import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 
 const serifDisplay = DM_Serif_Display({
@@ -94,6 +95,7 @@ export default function RootLayout({
         <main id="main-content" className="flex-1">
           {children}
         </main>
+        <Analytics />
         <Footer />
       </body>
     </html>
