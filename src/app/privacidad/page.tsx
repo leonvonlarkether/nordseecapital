@@ -2,20 +2,53 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { siteConfig } from "@/content/site";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad y Protección de Datos | Nordsee Capital",
+  title: "Política de Privacidad y Protección de Datos",
   description:
-    "Marco de privacidad, tratamiento de datos personales y confidencialidad de Nordsee Capital, conforme a la legislación aplicable en Chile (Leyes 19.628 y 21.719).",
+    "Marco de privacidad, tratamiento de datos personales y confidencialidad de Nordsee Capital, conforme a las Leyes 19.628 y 21.719 en Chile.",
   alternates: {
     canonical: "/privacidad",
+    languages: {
+      es: "/privacidad",
+      en: "/en/privacy",
+      "x-default": "/privacidad",
+    },
+  },
+  openGraph: {
+    title: "Política de Privacidad y Protección de Datos | Nordsee Capital",
+    description:
+      "Marco de privacidad, tratamiento de datos personales y confidencialidad de Nordsee Capital, conforme a las Leyes 19.628 y 21.719 en Chile.",
+    url: "https://nordseecapital.com/privacidad",
+    images: [
+      {
+        url: "/images/home/hero-nordsee.jpg",
+        width: 1376,
+        height: 768,
+        alt: "Política de Privacidad — Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidad y Protección de Datos | Nordsee Capital",
+    description:
+      "Marco de privacidad, tratamiento de datos personales y confidencialidad de Nordsee Capital, conforme a las Leyes 19.628 y 21.719 en Chile.",
+    images: ["/images/home/hero-nordsee.jpg"],
   },
 };
 
 export default function PrivacidadPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", item: "https://nordseecapital.com" },
+          { name: "Privacidad", item: "https://nordseecapital.com/privacidad" },
+        ]}
+      />
       <PageHeader
         badge="Marco Legal y Regulatorio"
         title="Política de Privacidad y Tratamiento de Datos"

@@ -6,12 +6,14 @@ interface BrandLogoProps {
   variant?: "dark" | "light";
   className?: string;
   withTagline?: boolean;
+  href?: string;
 }
 
 export function BrandLogo({
   variant = "dark",
   className = "",
   withTagline = false,
+  href = "/",
 }: BrandLogoProps) {
   // variant "light" = fondo oscuro (texto blanco del logo original)
   // variant "dark" = fondo claro (texto azul marino contrastado)
@@ -19,9 +21,9 @@ export function BrandLogo({
 
   return (
     <Link
-      href="/"
+      href={href}
       className={`group inline-flex items-center gap-3.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-sm transition-opacity hover:opacity-90 ${className}`}
-      aria-label="Nordsee Capital - Inicio"
+      aria-label="Nordsee Capital"
     >
       <div className="relative h-9 sm:h-10 w-[140px] sm:w-[155px] flex items-center">
         {/* Versión para fondo oscuro (texto blanco oficial) */}

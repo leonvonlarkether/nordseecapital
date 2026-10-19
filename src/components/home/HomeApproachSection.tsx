@@ -4,27 +4,50 @@ import { Badge } from "../ui/Badge";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { Shield, Search, TrendingUp } from "lucide-react";
 
-export function HomeApproachSection() {
-  const steps = [
-    {
-      num: "01",
-      icon: Search,
-      title: "Parametrización y Due Diligence",
-      desc: "Evaluamos a fondo el negocio subyacente, los títulos de dominio, las contingencias tributarias y la resiliencia de los flujos antes de comprometer capital.",
-    },
-    {
-      num: "02",
-      icon: Shield,
-      title: "Estructuración y Blindaje Legal",
-      desc: "Diseñamos contratos, garantías ejecutables y cláusulas de protección (covenants) integrando la normativa de cada jurisdicción involucrada.",
-    },
-    {
-      num: "03",
-      icon: TrendingUp,
-      title: "Monitoreo Activo y Creación de Valor",
-      desc: "Acompañamos al cliente de forma recurrente durante la vida de la inversión, controlando el desempeño, la liquidez y las opciones de desinversión.",
-    },
-  ];
+export function HomeApproachSection({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+
+  const steps = isEn
+    ? [
+        {
+          num: "01",
+          icon: Search,
+          title: "Scoping & Due Diligence",
+          desc: "We rigorously assess underlying operating fundamentals, property titles, tax liabilities, and cash flow resilience before deploying capital.",
+        },
+        {
+          num: "02",
+          icon: Shield,
+          title: "Structuring & Legal Shielding",
+          desc: "We craft executable contracts, collateral perfection, and protective covenants integrating the regulatory framework of each relevant jurisdiction.",
+        },
+        {
+          num: "03",
+          icon: TrendingUp,
+          title: "Active Governance & Value Creation",
+          desc: "We actively support our clients throughout the asset lifecycle, monitoring financial performance, liquidity, and planned divestment scenarios.",
+        },
+      ]
+    : [
+        {
+          num: "01",
+          icon: Search,
+          title: "Parametrización y Due Diligence",
+          desc: "Evaluamos a fondo el negocio subyacente, los títulos de dominio, las contingencias tributarias y la resiliencia de los flujos antes de comprometer capital.",
+        },
+        {
+          num: "02",
+          icon: Shield,
+          title: "Estructuración y Blindaje Legal",
+          desc: "Diseñamos contratos, garantías ejecutables y cláusulas de protección (covenants) integrando la normativa de cada jurisdicción involucrada.",
+        },
+        {
+          num: "03",
+          icon: TrendingUp,
+          title: "Monitoreo Activo y Creación de Valor",
+          desc: "Acompañamos al cliente de forma recurrente durante la vida de la inversión, controlando el desempeño, la liquidez y las opciones de desinversión.",
+        },
+      ];
 
   return (
     <section className="py-24 sm:py-32 bg-[#0B192C] text-[#FAF9F5] relative overflow-hidden">
@@ -32,14 +55,16 @@ export function HomeApproachSection() {
 
       <Container className="relative z-10">
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <Badge variant="dark">Filosofía de Trabajo</Badge>
+          <Badge variant="dark">{isEn ? "Work Philosophy" : "Filosofía de Trabajo"}</Badge>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#FAF9F5] font-normal tracking-tight mt-4 leading-tight text-balance">
-            Gestión disciplinada del riesgo y preservación de capital.
+            {isEn
+              ? "Disciplined risk management and capital preservation."
+              : "Gestión disciplinada del riesgo y preservación de capital."}
           </h2>
           <p className="text-base sm:text-lg text-[#F8F9FA]/70 mt-4 leading-relaxed">
-            No creemos en soluciones inmediatas ni en apuestas especulativas. Cada
-            estrategia se construye sobre fundamentos analíticos, garantías
-            reales y estricto apego regulatorio.
+            {isEn
+              ? "We do not believe in superficial shortcuts or speculative gambles. Every strategy is built on analytical fundamentals, tangible collateral, and strict regulatory compliance."
+              : "No creemos en soluciones inmediatas ni en apuestas especulativas. Cada estrategia se construye sobre fundamentos analíticos, garantías reales y estricto apego regulatorio."}
           </p>
         </ScrollReveal>
 

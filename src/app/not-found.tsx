@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Home } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Página No Encontrada | Error 404",
+  title: "Página No Encontrada",
   robots: {
     index: false,
     follow: false,

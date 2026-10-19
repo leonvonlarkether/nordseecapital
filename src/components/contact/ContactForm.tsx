@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2, AlertCircle, Send, Loader2, ShieldCheck, MapPin, Video } from "lucide-react";
 
-export function ContactForm() {
+export function ContactForm({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+
   const [formData, setFormData] = useState({
     nombre: "",
     organizacion: "",
@@ -42,7 +44,6 @@ export function ContactForm() {
 
     // Verificación honeypot antispam
     if (formData.honeypot) {
-      // Trampa para bots
       setStatus("success");
       return;
     }
@@ -50,7 +51,11 @@ export function ContactForm() {
     // Validación básica de campos requeridos
     if (!formData.nombre.trim() || !formData.email.trim() || !formData.mensaje.trim()) {
       setStatus("error");
-      setErrorMessage("Por favor complete los campos obligatorios marcados con asterisco (*).");
+      setErrorMessage(
+        isEn
+          ? "Please fill in all mandatory fields marked with an asterisk (*)."
+          : "Por favor complete los campos obligatorios marcados con asterisco (*)."
+      );
       return;
     }
 
@@ -83,13 +88,17 @@ export function ContactForm() {
         setStatus("error");
         setErrorMessage(
           data.message ||
-          "No fue posible procesar su consulta en este momento. Por favor escríbanos directamente a contacto@nordseecapital.com"
+            (isEn
+              ? "Unable to process your request at this moment. Please email us directly at contacto@nordseecapital.com"
+              : "No fue posible procesar su consulta en este momento. Por favor escríbanos directamente a contacto@nordseecapital.com")
         );
       }
     } catch {
       setStatus("error");
       setErrorMessage(
-        "Ocurrió una incidencia de conexión. Por favor escríbanos a contacto@nordseecapital.com o llámenos al +56 9 6667 4099."
+        isEn
+          ? "A network error occurred. Please contact us at contacto@nordseecapital.com or call +56 9 6667 4099."
+          : "Ocurrió una incidencia de conexión. Por favor escríbanos a contacto@nordseecapital.com o llámenos al +56 9 6667 4099."
       );
     }
   };
@@ -102,25 +111,31 @@ export function ContactForm() {
         </div>
         <div className="space-y-2">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-            Registro Fiduciario Confirmado
+            {isEn ? "Fiduciary Registration Confirmed" : "Registro Fiduciario Confirmado"}
           </span>
           <h3 className="font-serif text-2xl sm:text-3xl text-[#0B192C]">
-            Consulta Recibida con Éxito
+            {isEn ? "Inquiry Successfully Received" : "Consulta Recibida con Éxito"}
           </h3>
         </div>
         <p className="text-sm sm:text-base text-[#4B5565] max-w-lg mx-auto leading-relaxed">
-          Su requerimiento ha sido ingresado en nuestra mesa de atención privada. Uno de nuestros socios directores revisará los antecedentes y se pondrá en contacto en un plazo máximo de 24 horas hábiles.
+          {isEn
+            ? "Your request has been routed to our private client desk. A managing partner will review your background and respond within 24 business hours."
+            : "Su requerimiento ha sido ingresado en nuestra mesa de atención privada. Uno de nuestros socios directores revisará los antecedentes y se pondrá en contacto en un plazo máximo de 24 horas hábiles."}
         </p>
         <div className="p-4 rounded-xl bg-[#FAF9F5] border border-black/5 max-w-md mx-auto text-xs text-[#738094] flex items-center justify-center gap-2">
           <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
-          <span>Toda la información remitida está amparada bajo estricto secreto profesional.</span>
+          <span>
+            {isEn
+              ? "All transmitted information is protected under strict professional confidentiality."
+              : "Toda la información remitida está amparada bajo estricto secreto profesional."}
+          </span>
         </div>
         <div className="pt-2">
           <button
             onClick={() => setStatus("idle")}
             className="text-xs font-semibold uppercase tracking-wider text-[#0B192C] hover:text-[#C5A059] underline underline-offset-4 transition-colors py-2 px-4 min-h-[44px] inline-flex items-center"
           >
-            Enviar otra consulta
+            {isEn ? "Submit another inquiry" : "Enviar otra consulta"}
           </button>
         </div>
       </div>
@@ -133,18 +148,20 @@ export function ContactForm() {
       <div className="border-b border-black/8 pb-6 mb-8">
         <div className="flex items-center justify-between gap-4 mb-2">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-            Mesa de Admisión &amp; Consulta
+            {isEn ? "Private Client Intake" : "Mesa de Admisión & Consulta"}
           </span>
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF9F5] border border-[#C5A059]/30 text-[11px] font-medium text-[#0B192C]">
             <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
-            Reserva Fiduciaria
+            {isEn ? "Fiduciary Secrecy" : "Reserva Fiduciaria"}
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl text-[#0B192C] font-normal tracking-tight">
-          Formulario de Consulta Estratégica
+          {isEn ? "Strategic Consultation Request" : "Formulario de Consulta Estratégica"}
         </h2>
         <p className="text-xs sm:text-sm text-[#4B5565] mt-1.5 leading-relaxed">
-          Complete los campos a continuación para derivar su caso al socio especialista correspondiente.
+          {isEn
+            ? "Please complete the fields below to direct your inquiry to the relevant partner."
+            : "Complete los campos a continuación para derivar su caso al socio especialista correspondiente."}
         </p>
       </div>
 
@@ -170,7 +187,7 @@ export function ContactForm() {
               htmlFor="nombre"
               className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
             >
-              Nombre Completo <span className="text-[#C5A059]">*</span>
+              {isEn ? "Full Name" : "Nombre Completo"} <span className="text-[#C5A059]">*</span>
             </label>
             <input
               id="nombre"
@@ -180,7 +197,7 @@ export function ContactForm() {
               autoComplete="name"
               value={formData.nombre}
               onChange={handleChange}
-              placeholder="Ej. Constanza Silva"
+              placeholder={isEn ? "e.g., Alexandra Miller" : "Ej. Constanza Silva"}
               className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
             />
           </div>
@@ -190,7 +207,10 @@ export function ContactForm() {
               htmlFor="organizacion"
               className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
             >
-              Organización / Family Office <span className="text-xs text-[#738094] lowercase font-normal">(opcional)</span>
+              {isEn ? "Organization / Family Office" : "Organización / Family Office"}{" "}
+              <span className="text-xs text-[#738094] lowercase font-normal">
+                ({isEn ? "optional" : "opcional"})
+              </span>
             </label>
             <input
               id="organizacion"
@@ -199,7 +219,7 @@ export function ContactForm() {
               autoComplete="organization"
               value={formData.organizacion}
               onChange={handleChange}
-              placeholder="Ej. Inversiones San Gabriel / Directora"
+              placeholder={isEn ? "e.g., Greenpoint Capital / Director" : "Ej. Inversiones San Gabriel / Directora"}
               className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
             />
           </div>
@@ -212,7 +232,7 @@ export function ContactForm() {
               htmlFor="email"
               className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
             >
-              Correo Electrónico <span className="text-[#C5A059]">*</span>
+              {isEn ? "Business Email" : "Correo Electrónico"} <span className="text-[#C5A059]">*</span>
             </label>
             <input
               id="email"
@@ -223,7 +243,7 @@ export function ContactForm() {
               spellCheck={false}
               value={formData.email}
               onChange={handleChange}
-              placeholder="nombre@empresa.com"
+              placeholder="name@company.com"
               className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
             />
           </div>
@@ -233,7 +253,7 @@ export function ContactForm() {
               htmlFor="telefono"
               className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
             >
-              Teléfono de Contacto
+              {isEn ? "Contact Phone" : "Teléfono de Contacto"}
             </label>
             <input
               id="telefono"
@@ -242,7 +262,7 @@ export function ContactForm() {
               autoComplete="tel"
               value={formData.telefono}
               onChange={handleChange}
-              placeholder="+56 9 1234 5678"
+              placeholder={isEn ? "+1 (305) 555-0199" : "+56 9 1234 5678"}
               className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70"
             />
           </div>
@@ -251,7 +271,7 @@ export function ContactForm() {
         {/* Fila 3: Modalidad Preferida de Reunión */}
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2.5">
-            Preferencia de Reunión Inicial
+            {isEn ? "Initial Meeting Preference" : "Preferencia de Reunión Inicial"}
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button
@@ -265,7 +285,7 @@ export function ContactForm() {
               <MapPin className={`w-4 h-4 shrink-0 ${formData.modalidad === "santiago" ? "text-[#C5A059]" : "text-[#738094]"}`} />
               <div className="truncate">
                 <span className="block font-semibold">Santiago</span>
-                <span className="text-[10px] opacity-75">Las Condes (Piso 21)</span>
+                <span className="text-[10px] opacity-75">{isEn ? "Las Condes (Floor 21)" : "Las Condes (Piso 21)"}</span>
               </div>
             </button>
 
@@ -280,7 +300,7 @@ export function ContactForm() {
               <MapPin className={`w-4 h-4 shrink-0 ${formData.modalidad === "concepcion" ? "text-[#C5A059]" : "text-[#738094]"}`} />
               <div className="truncate">
                 <span className="block font-semibold">Concepción</span>
-                <span className="text-[10px] opacity-75">O&apos;Higgins 241 (Piso 9)</span>
+                <span className="text-[10px] opacity-75">{isEn ? "O'Higgins 241 (Floor 9)" : "O'Higgins 241 (Piso 9)"}</span>
               </div>
             </button>
 
@@ -294,8 +314,8 @@ export function ContactForm() {
             >
               <Video className={`w-4 h-4 shrink-0 ${formData.modalidad === "virtual" ? "text-[#C5A059]" : "text-[#738094]"}`} />
               <div className="truncate">
-                <span className="block font-semibold">Sesión Virtual</span>
-                <span className="text-[10px] opacity-75">Videoconferencia Segura</span>
+                <span className="block font-semibold">{isEn ? "Virtual Session" : "Sesión Virtual"}</span>
+                <span className="text-[10px] opacity-75">{isEn ? "Secure Videoconference" : "Videoconferencia Segura"}</span>
               </div>
             </button>
           </div>
@@ -307,7 +327,7 @@ export function ContactForm() {
             htmlFor="mensaje"
             className="block text-xs font-semibold uppercase tracking-wider text-[#0B192C] mb-2"
           >
-            Detalle o Contexto de la Consulta <span className="text-[#C5A059]">*</span>
+            {isEn ? "Inquiry Details & Context" : "Detalle o Contexto de la Consulta"} <span className="text-[#C5A059]">*</span>
           </label>
           <textarea
             id="mensaje"
@@ -316,7 +336,11 @@ export function ContactForm() {
             required
             value={formData.mensaje}
             onChange={handleChange}
-            placeholder="Describa el objetivo o contexto de su requerimiento (ej. diversificación transfronteriza de cartera, estructuración de vehículo corporativo, financiamiento de proyecto)…"
+            placeholder={
+              isEn
+                ? "Please outline your objectives or context (e.g., cross-border wealth structuring, private credit origination, prime real estate allocation)..."
+                : "Describa el objetivo o contexto de su requerimiento (ej. diversificación transfronteriza de cartera, estructuración de vehículo corporativo, financiamiento de proyecto)…"
+            }
             className="w-full px-4 py-3 rounded-xl border border-black/10 text-sm text-[#151B26] placeholder:text-[#828F9E] focus:outline-hidden focus:ring-2 focus:ring-[#C5A059] focus:border-[#C5A059] transition-all bg-[#FAF9F5]/70 resize-y"
           />
         </div>
@@ -343,11 +367,11 @@ export function ContactForm() {
             {status === "submitting" ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin mr-2" aria-hidden="true" />
-                <span>Transmitiendo antecedentes…</span>
+                <span>{isEn ? "Transmitting details…" : "Transmitiendo antecedentes…"}</span>
               </>
             ) : (
               <>
-                <span>Coordinar Conversación Estratégica</span>
+                <span>{isEn ? "Coordinate Strategic Conversation" : "Coordinar Conversación Estratégica"}</span>
                 <Send className="w-4 h-4 ml-2" aria-hidden="true" />
               </>
             )}
@@ -355,7 +379,11 @@ export function ContactForm() {
 
           <div className="flex items-center gap-2 text-[11px] text-[#738094]">
             <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
-            <span>Protocolo bajo secreto profesional y acuerdos de no divulgación.</span>
+            <span>
+              {isEn
+                ? "Protected under fiduciary professional secrecy and non-disclosure standards."
+                : "Protocolo bajo secreto profesional y acuerdos de no divulgación."}
+            </span>
           </div>
         </div>
       </form>

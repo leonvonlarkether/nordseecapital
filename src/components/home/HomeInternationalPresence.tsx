@@ -5,22 +5,29 @@ import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { siteConfig } from "@/content/site";
+import { siteConfigEn } from "@/content/en/site";
 import { MapPin, ArrowUpRight, ShieldCheck } from "lucide-react";
-export function HomeInternationalPresence() {
+
+export function HomeInternationalPresence({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+  const config = isEn ? siteConfigEn : siteConfig;
+
   return (
-    <section className="py-24 sm:py-32 bg-[#F4F2EB] border-b border-black/5" id="alcance-geografico">
+    <section className="py-24 sm:py-32 bg-[#F4F2EB] border-b border-black/5" id={isEn ? "geographic-reach" : "alcance-geografico"}>
       <Container size="wide">
         {/* 1. Cabecera Editorial Superior + Ficha Institucional de Sedes en Chile */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 sm:mb-16">
           <ScrollReveal direction="left" delay={50} className="lg:col-span-7 space-y-4">
-            <Badge variant="light">Alcance Geográfico</Badge>
+            <Badge variant="light">{isEn ? "Geographic Reach" : "Alcance Geográfico"}</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-[1.12] text-balance">
-              Presencia operativa y alianzas en tres mercados estratégicos.
+              {isEn
+                ? "Operational presence and alliances across three strategic markets."
+                : "Presencia operativa y alianzas en tres mercados estratégicos."}
             </h2>
             <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed max-w-2xl font-normal">
-              Nuestra estructura internacional conecta el capital de familias e
-              inversionistas con oportunidades tangibles y vehículos regulados en
-              jurisdicciones de alta seguridad jurídica.
+              {isEn
+                ? "Our international structure connects family and corporate capital with tangible opportunities and regulated vehicles in jurisdictions with high legal certainty."
+                : "Nuestra estructura internacional conecta el capital de familias e inversionistas con oportunidades tangibles y vehículos regulados en jurisdicciones de alta seguridad jurídica."}
             </p>
           </ScrollReveal>
 
@@ -31,16 +38,16 @@ export function HomeInternationalPresence() {
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#C5A059]" aria-hidden="true" />
                   <span className="text-xs font-bold uppercase tracking-wider text-[#0B192C]">
-                    Sedes Corporativas en Chile
+                    {isEn ? "Corporate Offices in Chile" : "Sedes Corporativas en Chile"}
                   </span>
                 </div>
                 <span className="text-[10px] font-semibold text-[#526071] tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-[#F4F2EB] border border-black/5">
-                  Atención Directa
+                  {isEn ? "Direct Access" : "Atención Directa"}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {siteConfig.offices.map((office) => (
+                {config.offices.map((office) => (
                   <div
                     key={office.city}
                     className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FAF9F5] border border-black/4"
@@ -64,22 +71,22 @@ export function HomeInternationalPresence() {
               <div className="pt-2 border-t border-black/5 flex items-center justify-between text-xs text-[#526071]">
                 <span className="flex items-center gap-1.5 text-[11px]">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
-                  Gobernanza fiduciaria transfronteriza
+                  {isEn ? "Cross-border fiduciary governance" : "Gobernanza fiduciaria transfronteriza"}
                 </span>
                 <Link
-                  href="/contacto"
+                  href={isEn ? "/en/contact" : "/contacto"}
                   className="text-[#C5A059] hover:underline font-semibold text-xs inline-flex items-center gap-0.5 focus-visible:ring-1 focus-visible:ring-[#C5A059] rounded-xs"
                 >
-                  Agendar reunión <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                  {isEn ? "Schedule meeting" : "Agendar reunión"} <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </Link>
               </div>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* 2. Grilla Principal de los 3 Mercados Internacionales (Ancho Completo, Alineación Impecable) */}
+        {/* 2. Grilla Principal de los 3 Mercados Internacionales */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {siteConfig.internationalReach.map((item, index) => (
+          {config.internationalReach.map((item, index) => (
             <ScrollReveal
               key={item.region}
               delay={index * 120}

@@ -5,6 +5,7 @@ import { Container } from "../ui/Container";
 import { Badge } from "../ui/Badge";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { services } from "@/content/services";
+import { servicesEn } from "@/content/en/services";
 import { ArrowUpRight } from "lucide-react";
 
 // Mapeo de fotografía arquitectónica editorial curada por área
@@ -12,30 +13,36 @@ const serviceImages: Record<string, string> = {
   "real-estate": "/images/services/real-estate.jpg",
   "wealth-management": "/images/services/wealth-management.jpg",
   "deuda-privada": "/images/services/deuda-privada.jpg",
+  "private-debt": "/images/services/deuda-privada.jpg",
   ma: "/images/services/ma.jpg",
   "tax-legal": "/images/services/tax-legal.jpg",
   "golden-visa-portugal": "/images/services/golden-visa.jpg",
 };
 
-export function HomeServicesSection() {
+export function HomeServicesSection({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+  const serviceList = isEn ? servicesEn : services;
+
   return (
-    <section className="py-24 sm:py-32 bg-[#FAF9F5] scroll-mt-24" id="servicios">
+    <section className="py-24 sm:py-32 bg-[#FAF9F5] scroll-mt-24" id={isEn ? "services" : "servicios"}>
       <Container>
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mb-14 sm:mb-20">
-          <Badge variant="gold">Áreas de Especialización</Badge>
+          <Badge variant="gold">{isEn ? "Specialized Practice Areas" : "Áreas de Especialización"}</Badge>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight mt-4 leading-tight text-balance">
-            Estructuras sólidas para cada dimensión del capital.
+            {isEn
+              ? "Sound structures for every dimension of capital."
+              : "Estructuras sólidas para cada dimensión del capital."}
           </h2>
           <p className="text-base sm:text-lg text-[#5D6A7E] mt-4">
-            Un abanico complementario de soluciones de inversión y asesoría
-            estratégica, diseñado para mitigar riesgos y maximizar el valor
-            patrimonial a largo plazo.
+            {isEn
+              ? "A complementary suite of investment and strategic advisory solutions, designed to mitigate systemic risks and maximize long-term wealth value."
+              : "Un abanico complementario de soluciones de inversión y asesoría estratégica, diseñado para mitigar riesgos y maximizar el valor patrimonial a largo plazo."}
           </p>
         </ScrollReveal>
 
         {/* Grilla 3x2 de servicios con fotografía arquitectónica animada en cascada */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
+          {serviceList.map((service, index) => {
             const imageSrc = serviceImages[service.slug] || "/images/home/hero-nordsee.jpg";
 
             return (
@@ -51,7 +58,7 @@ export function HomeServicesSection() {
                     <div className="relative aspect-[16/10] overflow-hidden bg-[#0B192C]/5">
                       <Image
                         src={imageSrc}
-                        alt={`Fotografía conceptual de arquitectura para el área de ${service.title}`}
+                        alt={isEn ? `Architectural photography representing ${service.title}` : `Fotografía conceptual de arquitectura para el área de ${service.title}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -81,7 +88,7 @@ export function HomeServicesSection() {
 
                       <div className="space-y-2 pt-4 border-t border-black/5 mb-2">
                         <span className="text-[11px] font-semibold uppercase tracking-wider text-[#738094] block mb-2">
-                          Alcance de Intervención:
+                          {isEn ? "Key Capabilities:" : "Alcance de Intervención:"}
                         </span>
                         {service.keyCapabilities.slice(0, 3).map((cap, i) => (
                           <div
@@ -98,10 +105,10 @@ export function HomeServicesSection() {
 
                   <div className="px-7 sm:px-8 pb-7 sm:pb-8 pt-4 border-t border-black/5 bg-[#FAF9F5]/40 flex items-center justify-between">
                     <Link
-                      href={`/servicios/${service.slug}`}
+                      href={isEn ? `/en/services/${service.slug}` : `/servicios/${service.slug}`}
                       className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B192C] group-hover:text-[#C5A059] transition-colors after:absolute after:inset-0 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:rounded-3xl"
                     >
-                      <span>Ver detalle del servicio</span>
+                      <span>{isEn ? "View service details" : "Ver detalle del servicio"}</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C5A059]" aria-hidden="true" />
                     </Link>
                     <span className="text-[11px] text-[#738094] group-hover:text-[#0B192C] transition-colors">

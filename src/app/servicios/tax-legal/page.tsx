@@ -4,11 +4,37 @@ import { services } from "@/content/services";
 import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
 
 export const metadata: Metadata = {
-  title: "Tax & Legal: Asesoría Legal y Tributaria | Nordsee Capital",
+  title: "Tax & Legal: Asesoría Legal y Tributaria",
   description:
     "Planificación tributaria patrimonial, reorganizaciones corporativas complejas y estructuración legal cross-border con resguardo intergeneracional.",
   alternates: {
     canonical: "/servicios/tax-legal",
+    languages: {
+      es: "/servicios/tax-legal",
+      en: "/en/services/tax-legal",
+      "x-default": "/servicios/tax-legal",
+    },
+  },
+  openGraph: {
+    title: "Tax & Legal: Asesoría Legal y Tributaria | Nordsee Capital",
+    description:
+      "Planificación tributaria patrimonial, reorganizaciones corporativas complejas y estructuración legal cross-border con resguardo intergeneracional.",
+    url: "https://nordseecapital.com/servicios/tax-legal",
+    images: [
+      {
+        url: "/images/services/tax-legal.jpg",
+        width: 1600,
+        height: 1068,
+        alt: "Tax & Legal: Asesoría Legal y Tributaria — Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tax & Legal: Asesoría Legal y Tributaria | Nordsee Capital",
+    description:
+      "Planificación tributaria patrimonial, reorganizaciones corporativas complejas y estructuración legal cross-border con resguardo intergeneracional.",
+    images: ["/images/services/tax-legal.jpg"],
   },
 };
 

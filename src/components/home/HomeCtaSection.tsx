@@ -6,7 +6,9 @@ import { ScrollReveal } from "../ui/ScrollReveal";
 import { siteConfig } from "@/content/site";
 import { Mail, Phone, ArrowRight } from "lucide-react";
 
-export function HomeCtaSection() {
+export function HomeCtaSection({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+
   return (
     <section className="py-24 sm:py-32 bg-[#0B192C] text-[#FAF9F5] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-dark opacity-40 pointer-events-none" />
@@ -14,21 +16,23 @@ export function HomeCtaSection() {
 
       <Container className="relative z-10">
         <ScrollReveal direction="up" delay={50} className="max-w-3xl mx-auto text-center space-y-8">
-          <Badge variant="dark">Contacto Institucional</Badge>
+          <Badge variant="dark">{isEn ? "Institutional Inquiries" : "Contacto Institucional"}</Badge>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F5] font-normal tracking-tight leading-tight text-balance">
-            Conversemos sobre la estructura óptima para sus inversiones.
+            {isEn
+              ? "Let us discuss the optimal structure for your investments."
+              : "Conversemos sobre la estructura óptima para sus inversiones."}
           </h2>
 
           <p className="text-base sm:text-lg text-[#F8F9FA]/75 max-w-xl mx-auto leading-relaxed">
-            Ya sea que busque diversificar en activos inmobiliarios en EE.&nbsp;UU.,
-            estructurar deuda privada o planificar la tributación transfronteriza
-            de su patrimonio familiar, nuestro equipo está a su disposición.
+            {isEn
+              ? "Whether you are looking to diversify into prime US real estate, structure private credit, or navigate cross-border family wealth taxation, our partners are at your service."
+              : "Ya sea que busque diversificar en activos inmobiliarios en EE. UU., estructurar deuda privada o planificar la tributación transfronteriza de su patrimonio familiar, nuestro equipo está a su disposición."}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button href="/contacto" variant="gold" size="lg">
-              <span>Iniciar Consulta Confidencial</span>
+            <Button href={isEn ? "/en/contact" : "/contacto"} variant="gold" size="lg">
+              <span>{isEn ? "Initiate Confidential Inquiry" : "Iniciar Consulta Confidencial"}</span>
               <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
             </Button>
           </div>

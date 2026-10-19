@@ -2,24 +2,44 @@ import React from "react";
 import { Container } from "../ui/Container";
 import { ScrollReveal } from "../ui/ScrollReveal";
 
-export function HomeValueStrip() {
-  const values = [
-    {
-      num: "01",
-      title: "Perspectiva Global",
-      desc: "Originación y análisis de activos en Santiago, EE.UU. y la Península Ibérica con criterio transfronterizo.",
-    },
-    {
-      num: "02",
-      title: "Independencia Fiduciaria",
-      desc: "Alineación estricta con el interés familiar y corporativo, sin presiones de colocación de producto.",
-    },
-    {
-      num: "03",
-      title: "Arquitectura Jurídica",
-      desc: "Cada decisión de inversión se concibe desde su estructuración societaria, tributaria y sucesoria.",
-    },
-  ];
+export function HomeValueStrip({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+
+  const values = isEn
+    ? [
+        {
+          num: "01",
+          title: "Global Perspective",
+          desc: "Asset origination and analysis across Santiago, the US, and the Iberian Peninsula with a cross-border discipline.",
+        },
+        {
+          num: "02",
+          title: "Fiduciary Independence",
+          desc: "Strict alignment with family and corporate interests, completely free from product placement pressures.",
+        },
+        {
+          num: "03",
+          title: "Legal Architecture",
+          desc: "Every investment decision is conceived from its corporate, tax, and generational succession structure.",
+        },
+      ]
+    : [
+        {
+          num: "01",
+          title: "Perspectiva Global",
+          desc: "Originación y análisis de activos en Santiago, EE.UU. y la Península Ibérica con criterio transfronterizo.",
+        },
+        {
+          num: "02",
+          title: "Independencia Fiduciaria",
+          desc: "Alineación estricta con el interés familiar y corporativo, sin presiones de colocación de producto.",
+        },
+        {
+          num: "03",
+          title: "Arquitectura Jurídica",
+          desc: "Cada decisión de inversión se concibe desde su estructuración societaria, tributaria y sucesoria.",
+        },
+      ];
 
   return (
     <section className="bg-[#0B192C] text-[#FAF9F5] py-10 sm:py-12 border-y border-white/10 relative z-20">

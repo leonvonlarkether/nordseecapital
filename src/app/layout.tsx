@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nordseecapital.com"),
   alternates: {
     canonical: "/",
+    languages: {
+      es: "/",
+      en: "/en",
+      "x-default": "/",
+    },
   },
   openGraph: {
     title: "Nordsee Capital | Gestión Patrimonial, Real Estate y Tax & Legal",
@@ -42,8 +47,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/home/hero-nordsee.jpg",
-        width: 1200,
-        height: 630,
+        width: 1376,
+        height: 768,
         alt: "Nordsee Capital — Inversión Patrimonial y Rigor Legal",
       },
     ],

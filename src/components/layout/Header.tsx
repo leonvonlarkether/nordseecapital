@@ -7,6 +7,7 @@ import { BrandLogo } from "./BrandLogo";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { mainNav } from "@/content/navigation";
+import { mainNavEn, alternateRouteMap } from "@/content/en/navigation";
 import { ChevronDown, ChevronRight, Menu, X, ArrowUpRight } from "lucide-react";
 
 export function Header() {
@@ -14,6 +15,12 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const pathname = usePathname();
+
+  const isEn = pathname.startsWith("/en");
+  const navItems = isEn ? mainNavEn : mainNav;
+  const esUrl = isEn ? alternateRouteMap[pathname] || "/" : pathname;
+  const enUrl = !isEn ? alternateRouteMap[pathname] || "/en" : pathname;
+  const contactHref = isEn ? "/en/contact" : "/contacto";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +69,7 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const isDarkHero = pathname === "/" && !isScrolled && !mobileMenuOpen;
+  const isDarkHero = (pathname === "/" || pathname === "/en") && !isScrolled && !mobileMenuOpen;
 
   const headerBgClass = mobileMenuOpen
     ? "bg-[#FAF9F5] text-[#0B192C] border-b border-black/10 shadow-md"
@@ -77,17 +84,20 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${headerBgClass}`}
     >
       <Container className="flex items-center justify-between h-16 sm:h-20">
-        <BrandLogo variant={isDarkHero ? "light" : "dark"} />
+        <BrandLogo
+          variant={isDarkHero ? "light" : "dark"}
+          href={isEn ? "/en" : "/"}
+        />
 
         {/* Navegación Desktop */}
         <nav
           className="hidden lg:flex items-center gap-1 xl:gap-2"
-          aria-label="Navegación principal"
+          aria-label={isEn ? "Main navigation" : "Navegación principal"}
         >
-          {mainNav.map((item) => {
+          {navItems.map((item) => {
             const isActive =
-              item.href === "/"
-                ? pathname === "/"
+              item.href === "/" || item.href === "/en"
+                ? pathname === item.href
                 : pathname.startsWith(item.href);
 
             if (item.children) {
@@ -131,13 +141,13 @@ export function Header() {
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[480px] z-50">
                       <div className="bg-[#FAF9F5] border border-black/10 rounded-2xl p-4 shadow-xl shadow-black/10 backdrop-blur-md text-[#0B192C]">
                         <div className="text-xs font-semibold tracking-wider text-[#738094] uppercase px-3 py-1 mb-2 border-b border-black/5 flex items-center justify-between">
-                          <span>Áreas de Especialización</span>
+                          <span>{isEn ? "Practice Areas" : "Áreas de Especialización"}</span>
                           <Link
-                            href="/servicios"
+                            href={isEn ? "/en/services" : "/servicios"}
                             onClick={() => setServicesDropdownOpen(false)}
                             className="text-[#C5A059] hover:underline flex items-center gap-0.5 text-[11px] font-medium focus-visible:ring-1 focus-visible:ring-[#C5A059] rounded-xs"
                           >
-                            Ver todos <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                            {isEn ? "View all" : "Ver todos"} <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                           </Link>
                         </div>
                         <div className="grid grid-cols-1 gap-1">
@@ -190,14 +200,51 @@ export function Header() {
           })}
         </nav>
 
-        {/* CTA Desktop */}
+        {/* Selector de idioma & CTA Desktop */}
         <div className="hidden lg:flex items-center gap-3">
+          <div
+            className={`flex items-center rounded-full p-0.5 border text-xs font-semibold ${
+              isDarkHero
+                ? "border-white/20 bg-black/40 text-white"
+                : "border-black/10 bg-black/5 text-[#0B192C]"
+            }`}
+            role="group"
+            aria-label={isEn ? "Language selection" : "Selección de idioma"}
+          >
+            <Link
+              href={esUrl}
+              className={`px-2.5 py-1 rounded-full transition-all text-[11px] tracking-wider font-semibold ${
+                !isEn
+                  ? "bg-[#C5A059] text-[#07101C] shadow-2xs"
+                  : isDarkHero
+                  ? "text-white/70 hover:text-white"
+                  : "text-[#4B5565] hover:text-[#0B192C]"
+              }`}
+              aria-current={!isEn ? "true" : undefined}
+            >
+              ES
+            </Link>
+            <Link
+              href={enUrl}
+              className={`px-2.5 py-1 rounded-full transition-all text-[11px] tracking-wider font-semibold ${
+                isEn
+                  ? "bg-[#C5A059] text-[#07101C] shadow-2xs"
+                  : isDarkHero
+                  ? "text-white/70 hover:text-white"
+                  : "text-[#4B5565] hover:text-[#0B192C]"
+              }`}
+              aria-current={isEn ? "true" : undefined}
+            >
+              EN
+            </Link>
+          </div>
+
           <Button
-            href="/contacto"
+            href={contactHref}
             variant={isDarkHero ? "gold" : "primary"}
             size="sm"
           >
-            Contactar
+            {isEn ? "Contact Us" : "Contactar"}
           </Button>
         </div>
 
@@ -209,7 +256,7 @@ export function Header() {
               ? "text-white hover:bg-white/10"
               : "text-[#0B192C] hover:bg-black/5"
           }`}
-          aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={mobileMenuOpen ? (isEn ? "Close menu" : "Cerrar menú") : (isEn ? "Open menu" : "Abrir menú")}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
         >
@@ -228,11 +275,38 @@ export function Header() {
           className="lg:hidden fixed inset-x-0 top-16 bottom-0 h-[calc(100dvh-4rem)] bg-[#FAF9F5] z-50 overflow-y-auto px-6 py-6 flex flex-col justify-between border-t border-black/5 shadow-2xl"
         >
           <div className="space-y-4">
-            <nav className="flex flex-col divide-y divide-black/5" aria-label="Navegación móvil">
-              {mainNav.map((item) => {
+            {/* Selector de idioma en móvil */}
+            <div className="flex items-center justify-between p-3 rounded-xl bg-white border border-black/5 shadow-2xs">
+              <span className="text-xs font-semibold text-[#526071]">
+                {isEn ? "Language / Idioma:" : "Idioma / Language:"}
+              </span>
+              <div className="flex items-center rounded-full p-0.5 border border-black/10 bg-black/5 text-xs font-semibold">
+                <Link
+                  href={esUrl}
+                  onClick={closeMenus}
+                  className={`px-3 py-1 rounded-full transition-all text-xs font-semibold ${
+                    !isEn ? "bg-[#C5A059] text-[#07101C] shadow-xs" : "text-[#4B5565]"
+                  }`}
+                >
+                  ES
+                </Link>
+                <Link
+                  href={enUrl}
+                  onClick={closeMenus}
+                  className={`px-3 py-1 rounded-full transition-all text-xs font-semibold ${
+                    isEn ? "bg-[#C5A059] text-[#07101C] shadow-xs" : "text-[#4B5565]"
+                  }`}
+                >
+                  EN
+                </Link>
+              </div>
+            </div>
+
+            <nav className="flex flex-col divide-y divide-black/5" aria-label={isEn ? "Mobile navigation" : "Navegación móvil"}>
+              {navItems.map((item) => {
                 const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
+                  item.href === "/" || item.href === "/en"
+                    ? pathname === item.href
                     : pathname.startsWith(item.href);
 
                 if (item.children) {
@@ -250,7 +324,7 @@ export function Header() {
                           <ArrowUpRight className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
                         </Link>
                         <span className="text-[10px] font-semibold tracking-wider uppercase text-[#526071] px-2 py-0.5 rounded-full bg-[#EAE7DC]/60">
-                          6 Áreas
+                          {isEn ? "6 Areas" : "6 Áreas"}
                         </span>
                       </div>
                       <div className="mt-2 space-y-1 pl-3 border-l-2 border-[#C5A059]/30">
@@ -300,16 +374,16 @@ export function Header() {
 
           <div className="pt-6 border-t border-black/10 mt-6 space-y-3 shrink-0">
             <Button
-              href="/contacto"
+              href={contactHref}
               onClick={closeMenus}
               variant="gold"
               size="lg"
               className="w-full justify-center shadow-md font-medium min-h-[48px]"
             >
-              Iniciar Consulta Patrimonial
+              {isEn ? "Schedule Confidential Consultation" : "Iniciar Consulta Patrimonial"}
             </Button>
             <div className="text-center text-xs text-[#526071] font-medium tracking-wide">
-              Santiago · Concepción · Operaciones Internacionales
+              {isEn ? "Santiago · Concepción · Global Operations" : "Santiago · Concepción · Operaciones Internacionales"}
             </div>
           </div>
         </div>

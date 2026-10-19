@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { siteConfig } from "@/content/site";
+import { BreadcrumbJsonLd, ContactPageJsonLd } from "@/components/seo/JsonLd";
 import {
   Mail,
   Phone,
@@ -20,17 +21,50 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contacto | Sedes y Canales Oficiales | Nordsee Capital",
+  title: "Contacto: Sedes y Canales Oficiales",
   description:
-    "Comuníquese directamente con nuestros socios directores. Sedes corporativas en Santiago y Concepción. Atención fiduciaria para inversionistas y familias en Chile y el exterior.",
+    "Comuníquese directamente con nuestros socios directores. Sedes corporativas en Santiago y Concepción. Atención fiduciaria para inversionistas en Chile y el exterior.",
   alternates: {
     canonical: "/contacto",
+    languages: {
+      es: "/contacto",
+      en: "/en/contact",
+      "x-default": "/contacto",
+    },
+  },
+  openGraph: {
+    title: "Contacto: Sedes y Canales Oficiales | Nordsee Capital",
+    description:
+      "Comuníquese directamente con nuestros socios directores. Sedes corporativas en Santiago y Concepción. Atención fiduciaria para inversionistas en Chile y el exterior.",
+    url: "https://nordseecapital.com/contacto",
+    images: [
+      {
+        url: "/images/contact/santiago-corporate.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Oficinas y canales de contacto de Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contacto: Sedes y Canales Oficiales | Nordsee Capital",
+    description:
+      "Comuníquese directamente con nuestros socios directores. Sedes corporativas en Santiago y Concepción. Atención fiduciaria para inversionistas en Chile y el exterior.",
+    images: ["/images/contact/santiago-corporate.jpg"],
   },
 };
 
 export default function ContactoPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", item: "https://nordseecapital.com" },
+          { name: "Contacto", item: "https://nordseecapital.com/contacto" },
+        ]}
+      />
+      <ContactPageJsonLd />
       {/* =========================================================================
           HERO SECTION: Concierge de Inversión & Respaldo de Socios Directores
           Resuelve de raíz el vacío de cabecera con una grilla 7/5 balanceada.

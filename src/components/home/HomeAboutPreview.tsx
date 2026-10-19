@@ -6,13 +6,22 @@ import { Badge } from "../ui/Badge";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-export function HomeAboutPreview() {
-  const highlights = [
-    "Sinergia directa entre finanzas patrimoniales y estructuración legal",
-    "Gestión orientada a la conservación de capital y retorno ajustado por riesgo",
-    "Presencia en Chile y alianzas especializadas en Estados Unidos y Portugal",
-    "Atención personalizada con acceso directo al equipo socio-director",
-  ];
+export function HomeAboutPreview({ locale = "es" }: { locale?: "es" | "en" }) {
+  const isEn = locale === "en";
+
+  const highlights = isEn
+    ? [
+        "Direct synergy between wealth advisory and cross-border legal structuring",
+        "Management focused on capital preservation and risk-adjusted returns",
+        "Physical footprint in Chile with specialized alliances in the United States and Portugal",
+        "Direct access to our senior partner group without commercial intermediaries",
+      ]
+    : [
+        "Sinergia directa entre finanzas patrimoniales y estructuración legal",
+        "Gestión orientada a la conservación de capital y retorno ajustado por riesgo",
+        "Presencia en Chile y alianzas especializadas en Estados Unidos y Portugal",
+        "Atención personalizada con acceso directo al equipo socio-director",
+      ];
 
   return (
     <section className="py-24 sm:py-32 bg-[#FAF9F5] border-b border-black/5 relative overflow-hidden">
@@ -25,7 +34,7 @@ export function HomeAboutPreview() {
                 <div className="relative rounded-3xl overflow-hidden border border-black/10 shadow-2xl shadow-[#0B192C]/10 aspect-[4/5] group">
                   <Image
                     src="/images/about/atrium-corporate.jpg"
-                    alt="Atrio arquitectónico corporativo — Imagen conceptual institucional"
+                    alt={isEn ? "Architectural corporate atrium — Institutional concept image" : "Atrio arquitectónico corporativo — Imagen conceptual institucional"}
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
@@ -35,22 +44,23 @@ export function HomeAboutPreview() {
                   {/* Cita institucional sobrepuesta en la base de la imagen */}
                   <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059] block mb-2">
-                      Misión y Propósito
+                      {isEn ? "Mission and Purpose" : "Misión y Propósito"}
                     </span>
                     <blockquote className="font-serif text-lg leading-snug text-white/95 mb-3">
-                      “Ser un partner de excelencia en inversiones y negocios estables,
-                      comprometido con la disciplina técnica y el resguardo patrimonial.”
+                      {isEn
+                        ? "“To be a partner of excellence in stable investments and sound businesses, committed to analytical discipline and generational capital protection.”"
+                        : "“Ser un partner de excelencia en inversiones y negocios estables, comprometido con la disciplina técnica y el resguardo patrimonial.”"}
                     </blockquote>
                     <div className="pt-3 border-t border-white/15 flex items-center justify-between text-[11px] text-white/60">
-                      <span>Disciplina Analítica</span>
-                      <span className="text-[#C5A059]">Gobernanza Rigurosa</span>
+                      <span>{isEn ? "Analytical Discipline" : "Disciplina Analítica"}</span>
+                      <span className="text-[#C5A059]">{isEn ? "Rigorous Governance" : "Gobernanza Rigurosa"}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Sello de confianza lateral decorativo */}
                 <div className="hidden sm:block absolute -top-4 -right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-black/5 shadow-lg text-xs font-semibold text-[#0B192C]">
-                  <span className="text-[#C5A059] mr-1">✦</span> Criterio Institucional
+                  <span className="text-[#C5A059] mr-1">✦</span> {isEn ? "Institutional Standard" : "Criterio Institucional"}
                 </div>
               </div>
             </ScrollReveal>
@@ -59,17 +69,16 @@ export function HomeAboutPreview() {
           {/* Columna Textual */}
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-6">
             <ScrollReveal direction="up" delay={100}>
-              <Badge variant="light">Identidad y Enfoque</Badge>
+              <Badge variant="light">{isEn ? "Identity & Approach" : "Identidad y Enfoque"}</Badge>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0B192C] font-normal tracking-tight leading-tight mt-3 text-balance">
-                Un socio estratégico que integra capital, negocios y estructura jurídica.
+                {isEn
+                  ? "A strategic partner integrating capital, business, and legal structure."
+                  : "Un socio estratégico que integra capital, negocios y estructura jurídica."}
               </h2>
               <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed mt-4">
-                En Nordsee Capital entendemos que la gestión patrimonial moderna no
-                puede desvincularse de la realidad fiscal y regulatoria. Por ello,
-                cada oportunidad de inversión —ya sea un activo inmobiliario de
-                renta, un vehículo de deuda privada o una transacción de M&amp;A—
-                es diseñada y supervisada de manera integral con nuestra área de Tax
-                &amp; Legal.
+                {isEn
+                  ? "At Nordsee Capital, we understand that contemporary wealth management cannot be detached from tax and regulatory realities. Therefore, every investment opportunity—whether prime income-generating real estate, private debt structures, or M&A advisory—is engineered alongside our Tax & Legal practice."
+                  : "En Nordsee Capital entendemos que la gestión patrimonial moderna no puede desvincularse de la realidad fiscal y regulatoria. Por ello, cada oportunidad de inversión —ya sea un activo inmobiliario de renta, un vehículo de deuda privada o una transacción de M&A— es diseñada y supervisada de manera integral con nuestra área de Tax & Legal."}
               </p>
             </ScrollReveal>
 
@@ -88,10 +97,10 @@ export function HomeAboutPreview() {
 
             <ScrollReveal delay={550} direction="up" className="pt-4">
               <Link
-                href="/nosotros"
+                href={isEn ? "/en/about" : "/nosotros"}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B192C] hover:text-[#C5A059] transition-colors group py-2 min-h-[44px] rounded-lg focus-visible:ring-2 focus-visible:ring-[#C5A059] focus-visible:outline-hidden"
               >
-                <span>Conocer nuestra filosofía y equipo</span>
+                <span>{isEn ? "Learn about our philosophy and team" : "Conocer nuestra filosofía y equipo"}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </ScrollReveal>

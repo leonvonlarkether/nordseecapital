@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { teamMembers } from "@/content/team";
+import { BreadcrumbJsonLd, AboutPageJsonLd } from "@/components/seo/JsonLd";
 import {
   ShieldCheck,
   Scale,
@@ -18,11 +19,37 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Nosotros | Identidad, Filosofía y Equipo Directivo | Nordsee Capital",
+  title: "Nosotros: Identidad, Filosofía y Equipo Directivo",
   description:
     "Conozca la misión, principios de inversión y al equipo de socios directores de Nordsee Capital: gestión patrimonial, real estate y rigor legal.",
   alternates: {
     canonical: "/nosotros",
+    languages: {
+      es: "/nosotros",
+      en: "/en/about",
+      "x-default": "/nosotros",
+    },
+  },
+  openGraph: {
+    title: "Nosotros: Identidad, Filosofía y Equipo Directivo | Nordsee Capital",
+    description:
+      "Conozca la misión, principios de inversión y al equipo de socios directores de Nordsee Capital: gestión patrimonial, real estate y rigor legal.",
+    url: "https://nordseecapital.com/nosotros",
+    images: [
+      {
+        url: "/images/about/atrium-corporate.jpg",
+        width: 1200,
+        height: 896,
+        alt: "Sede y socios directores de Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nosotros: Identidad, Filosofía y Equipo Directivo | Nordsee Capital",
+    description:
+      "Conozca la misión, principios de inversión y al equipo de socios directores de Nordsee Capital: gestión patrimonial, real estate y rigor legal.",
+    images: ["/images/about/atrium-corporate.jpg"],
   },
 };
 
@@ -62,6 +89,13 @@ export default function NosotrosPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", item: "https://nordseecapital.com" },
+          { name: "Nosotros", item: "https://nordseecapital.com/nosotros" },
+        ]}
+      />
+      <AboutPageJsonLd />
       {/* 1. Hero Editorial de Nosotros con la Fotografía Protagonista de los 3 Socios */}
       <section className="relative pt-32 sm:pt-40 pb-20 sm:pb-28 bg-gradient-to-b from-[#F4F2EB] via-[#FAF9F5] to-[#FAF9F5] border-b border-black/5 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-60 pointer-events-none" />

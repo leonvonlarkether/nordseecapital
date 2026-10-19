@@ -4,76 +4,113 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://nordseecapital.com";
 
   // Fecha fija representativa para prerender estático determinista
-  const lastModified = new Date("2026-10-11T00:00:00.000Z");
+  const lastModified = new Date("2026-10-19T00:00:00.000Z");
 
-  const routes = [
+  const pagePairs = [
     {
-      url: `${baseUrl}`,
-      lastModified,
+      es: "",
+      en: "/en",
       changeFrequency: "weekly" as const,
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/nosotros`,
-      lastModified,
+      es: "/nosotros",
+      en: "/en/about",
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/servicios`,
-      lastModified,
+      es: "/servicios",
+      en: "/en/services",
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/servicios/real-estate`,
-      lastModified,
+      es: "/servicios/real-estate",
+      en: "/en/services/real-estate",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/servicios/wealth-management`,
-      lastModified,
+      es: "/servicios/wealth-management",
+      en: "/en/services/wealth-management",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/servicios/deuda-privada`,
-      lastModified,
+      es: "/servicios/deuda-privada",
+      en: "/en/services/private-debt",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/servicios/ma`,
-      lastModified,
+      es: "/servicios/ma",
+      en: "/en/services/ma",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/servicios/tax-legal`,
-      lastModified,
+      es: "/servicios/tax-legal",
+      en: "/en/services/tax-legal",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/servicios/golden-visa-portugal`,
-      lastModified,
+      es: "/servicios/golden-visa-portugal",
+      en: "/en/services/golden-visa-portugal",
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/contacto`,
-      lastModified,
+      es: "/contacto",
+      en: "/en/contact",
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/privacidad`,
-      lastModified,
+      es: "/privacidad",
+      en: "/en/privacy",
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
   ];
+
+  const routes: MetadataRoute.Sitemap = [];
+
+  for (const pair of pagePairs) {
+    const esUrl = `${baseUrl}${pair.es}`;
+    const enUrl = `${baseUrl}${pair.en}`;
+
+    // Spanish Entry
+    routes.push({
+      url: esUrl,
+      lastModified,
+      changeFrequency: pair.changeFrequency,
+      priority: pair.priority,
+      alternates: {
+        languages: {
+          es: esUrl,
+          en: enUrl,
+          "x-default": esUrl,
+        },
+      },
+    });
+
+    // English Entry
+    routes.push({
+      url: enUrl,
+      lastModified,
+      changeFrequency: pair.changeFrequency,
+      priority: pair.priority,
+      alternates: {
+        languages: {
+          es: esUrl,
+          en: enUrl,
+          "x-default": esUrl,
+        },
+      },
+    });
+  }
 
   return routes;
 }

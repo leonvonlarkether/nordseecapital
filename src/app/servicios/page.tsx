@@ -5,14 +5,41 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { services } from "@/content/services";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Servicios | Portafolio Integral de Soluciones de Inversión y Asesoría",
+  title: "Servicios: Portafolio de Inversión y Asesoría",
   description:
-    "Descubra nuestras 6 áreas estratégicas: Real Estate, Wealth Management, Deuda Privada, M&A, Tax & Legal y Golden Visa Portugal.",
+    "Portafolio integral de soluciones: Real Estate, Wealth Management, Deuda Privada, M&A, Tax & Legal y Golden Visa Portugal.",
   alternates: {
     canonical: "/servicios",
+    languages: {
+      es: "/servicios",
+      en: "/en/services",
+      "x-default": "/servicios",
+    },
+  },
+  openGraph: {
+    title: "Servicios: Portafolio de Inversión y Asesoría | Nordsee Capital",
+    description:
+      "Portafolio integral de soluciones: Real Estate, Wealth Management, Deuda Privada, M&A, Tax & Legal y Golden Visa Portugal.",
+    url: "https://nordseecapital.com/servicios",
+    images: [
+      {
+        url: "/images/home/hero-nordsee.jpg",
+        width: 1376,
+        height: 768,
+        alt: "Portafolio de Soluciones Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios: Portafolio de Inversión y Asesoría | Nordsee Capital",
+    description:
+      "Portafolio integral de soluciones: Real Estate, Wealth Management, Deuda Privada, M&A, Tax & Legal y Golden Visa Portugal.",
+    images: ["/images/home/hero-nordsee.jpg"],
   },
 };
 
@@ -28,6 +55,12 @@ const serviceImages: Record<string, string> = {
 export default function ServiciosGeneralPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", item: "https://nordseecapital.com" },
+          { name: "Servicios", item: "https://nordseecapital.com/servicios" },
+        ]}
+      />
       <PageHeader
         badge="Portafolio de Soluciones"
         title="Especialización técnica y sinergia transversal."

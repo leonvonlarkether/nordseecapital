@@ -4,11 +4,37 @@ import { services } from "@/content/services";
 import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
 
 export const metadata: Metadata = {
-  title: "Golden Visa Portugal: Residencia por Inversión | Nordsee Capital",
+  title: "Golden Visa Portugal: Residencia por Inversión",
   description:
     "Acompañamiento integral y due diligence de fondos de inversión elegibles en Portugal bajo la normativa CMVM vigente. Alianza local en terreno.",
   alternates: {
     canonical: "/servicios/golden-visa-portugal",
+    languages: {
+      es: "/servicios/golden-visa-portugal",
+      en: "/en/services/golden-visa-portugal",
+      "x-default": "/servicios/golden-visa-portugal",
+    },
+  },
+  openGraph: {
+    title: "Golden Visa Portugal: Residencia por Inversión | Nordsee Capital",
+    description:
+      "Acompañamiento integral y due diligence de fondos de inversión elegibles en Portugal bajo la normativa CMVM vigente. Alianza local en terreno.",
+    url: "https://nordseecapital.com/servicios/golden-visa-portugal",
+    images: [
+      {
+        url: "/images/services/golden-visa.jpg",
+        width: 1600,
+        height: 1067,
+        alt: "Golden Visa Portugal: Residencia por Inversión — Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Golden Visa Portugal: Residencia por Inversión | Nordsee Capital",
+    description:
+      "Acompañamiento integral y due diligence de fondos de inversión elegibles en Portugal bajo la normativa CMVM vigente. Alianza local en terreno.",
+    images: ["/images/services/golden-visa.jpg"],
   },
 };
 

@@ -4,11 +4,37 @@ import { services } from "@/content/services";
 import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
 
 export const metadata: Metadata = {
-  title: "Real Estate & Desarrollo Inmobiliario | Nordsee Capital",
+  title: "Real Estate & Desarrollo Inmobiliario",
   description:
     "Desarrollo, inversión y gestión de activos inmobiliarios comerciales y residenciales prime en Chile y Estados Unidos. Estabilidad de flujos y plusvalía.",
   alternates: {
     canonical: "/servicios/real-estate",
+    languages: {
+      es: "/servicios/real-estate",
+      en: "/en/services/real-estate",
+      "x-default": "/servicios/real-estate",
+    },
+  },
+  openGraph: {
+    title: "Real Estate & Desarrollo Inmobiliario | Nordsee Capital",
+    description:
+      "Desarrollo, inversión y gestión de activos inmobiliarios comerciales y residenciales prime en Chile y Estados Unidos. Estabilidad de flujos y plusvalía.",
+    url: "https://nordseecapital.com/servicios/real-estate",
+    images: [
+      {
+        url: "/images/services/real-estate.jpg",
+        width: 1200,
+        height: 896,
+        alt: "Real Estate & Desarrollo Inmobiliario — Nordsee Capital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate & Desarrollo Inmobiliario | Nordsee Capital",
+    description:
+      "Desarrollo, inversión y gestión de activos inmobiliarios comerciales y residenciales prime en Chile y Estados Unidos. Estabilidad de flujos y plusvalía.",
+    images: ["/images/services/real-estate.jpg"],
   },
 };
 
