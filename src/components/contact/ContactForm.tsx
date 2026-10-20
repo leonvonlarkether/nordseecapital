@@ -1,11 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2, AlertCircle, Send, Loader2, ShieldCheck, MapPin, Video } from "lucide-react";
+import { captureAndStoreAttribution, getStoredAttribution } from "@/lib/attribution";
 
 export function ContactForm({ locale = "es" }: { locale?: "es" | "en" }) {
   const isEn = locale === "en";
+
+  useEffect(() => {
+    captureAndStoreAttribution();
+  }, []);
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -63,10 +68,13 @@ export function ContactForm({ locale = "es" }: { locale?: "es" | "en" }) {
     setErrorMessage("");
 
     try {
+      const attribution = getStoredAttribution();
+      const eventId = `evt_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, attribution, eventId }),
       });
 
       const data = await res.json();

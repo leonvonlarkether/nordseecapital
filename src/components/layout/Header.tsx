@@ -16,6 +16,11 @@ export function Header() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const pathname = usePathname();
 
+  // No renderizar el Header público del sitio en las rutas del panel de administración
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   const isEn = pathname.startsWith("/en");
   const navItems = isEn ? mainNavEn : mainNav;
   const esUrl = isEn ? alternateRouteMap[pathname] || "/" : pathname;

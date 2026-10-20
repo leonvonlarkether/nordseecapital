@@ -21,6 +21,12 @@ import {
 
 export function Footer() {
   const pathname = usePathname();
+
+  // No renderizar el Footer público en las rutas del panel de administración
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   const isEn = pathname.startsWith("/en");
   const nav = isEn ? footerNavEn : footerNav;
   const currentSiteConfig = isEn ? siteConfigEn : siteConfig;
