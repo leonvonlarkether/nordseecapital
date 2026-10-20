@@ -329,7 +329,7 @@ export default function LeadsDashboard({ currentUser }: LeadsDashboardProps) {
     return (
       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF9F5] text-[#0B192C] border border-black/10 text-xs font-medium">
         <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
-        <span>Santiago (Piso 21)</span>
+        <span>Santiago</span>
       </span>
     );
   };
@@ -494,17 +494,17 @@ export default function LeadsDashboard({ currentUser }: LeadsDashboardProps) {
             {(statusFilter !== 'todos' ||
               modalidadFilter !== 'todos' ||
               searchTerm) && (
-              <button
-                onClick={() => {
-                  setStatusFilter('todos');
-                  setModalidadFilter('todos');
-                  setSearchTerm('');
-                }}
-                className="text-xs font-semibold text-[#8C6A2E] hover:text-[#C5A059] hover:underline cursor-pointer ml-auto"
-              >
-                Limpiar filtros
-              </button>
-            )}
+                <button
+                  onClick={() => {
+                    setStatusFilter('todos');
+                    setModalidadFilter('todos');
+                    setSearchTerm('');
+                  }}
+                  className="text-xs font-semibold text-[#8C6A2E] hover:text-[#C5A059] hover:underline cursor-pointer ml-auto"
+                >
+                  Limpiar filtros
+                </button>
+              )}
           </div>
         </div>
 
@@ -1084,11 +1084,10 @@ export default function LeadsDashboard({ currentUser }: LeadsDashboardProps) {
               setSearchTerm('');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${
-              statusFilter === 'todos' && !searchTerm
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${statusFilter === 'todos' && !searchTerm
                 ? 'text-[#0B192C] font-bold bg-[#FAF9F5]'
                 : 'text-[#738094] hover:text-[#0B192C]'
-            }`}
+              }`}
           >
             <div className="relative">
               <MessageSquare className="w-4 h-4" />
@@ -1107,11 +1106,10 @@ export default function LeadsDashboard({ currentUser }: LeadsDashboardProps) {
             onClick={() => {
               setStatusFilter((prev) => (prev === 'NEW' ? 'todos' : 'NEW'));
             }}
-            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${
-              statusFilter === 'NEW'
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${statusFilter === 'NEW'
                 ? 'text-blue-700 font-bold bg-blue-50/90 ring-1 ring-blue-200 shadow-2xs'
                 : 'text-[#738094] hover:text-[#0B192C]'
-            }`}
+              }`}
           >
             <div className="relative">
               <Sparkles className="w-4 h-4 text-blue-600" />
@@ -1128,11 +1126,10 @@ export default function LeadsDashboard({ currentUser }: LeadsDashboardProps) {
           <button
             type="button"
             onClick={handleSearchClick}
-            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${
-              searchTerm
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer select-none active:scale-95 ${searchTerm
                 ? 'text-[#8C6A2E] font-bold bg-[#C5A059]/15 ring-1 ring-[#C5A059]/30'
                 : 'text-[#738094] hover:text-[#0B192C]'
-            }`}
+              }`}
           >
             <Search className="w-4 h-4 text-[#C5A059]" />
             <span className="text-[10px] mt-1 font-medium">Buscar</span>
