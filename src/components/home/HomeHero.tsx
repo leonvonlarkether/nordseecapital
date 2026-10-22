@@ -28,7 +28,7 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
           poster="/images/home/hero-video-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover object-[center_65%] pointer-events-none motion-reduce:hidden"
         >
-          <source src="/video/caballos2.mp4" type="video/mp4" />
+          <source src="/video/velero3.mp4" type="video/mp4" />
         </video>
         <div
           className="hidden motion-reduce:block absolute inset-0 bg-cover bg-[center_65%]"
@@ -47,9 +47,8 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
           <div className="max-w-2xl lg:max-w-3xl xl:max-w-3xl space-y-5 sm:space-y-6">
             {/* Etiqueta editorial discreta */}
             <div
-              className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#FAF9F5] shadow-sm transition-[opacity,transform] duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[350ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#FAF9F5] shadow-sm transition-[opacity,transform] duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[350ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" aria-hidden="true" />
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-[#FAF9F5]">
@@ -59,9 +58,8 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
 
             {/* Titular monumental editorial */}
             <h1
-              className={`font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-normal tracking-tight text-[#FAF9F5] leading-[1.08] drop-shadow-md text-balance transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-normal tracking-tight text-[#FAF9F5] leading-[1.08] drop-shadow-md text-balance transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[650ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               {isEn ? (
                 <>
@@ -84,9 +82,8 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
 
             {/* Subtítulo editorial */}
             <p
-              className={`text-sm sm:text-base md:text-lg text-[#FAF9F5]/90 leading-relaxed font-normal max-w-xl drop-shadow-sm transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[950ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-sm sm:text-base md:text-lg text-[#FAF9F5]/90 leading-relaxed font-normal max-w-xl drop-shadow-sm transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[950ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               {isEn
                 ? "We integrate wealth strategy, real estate investment, and legal structuring for families, corporations, and long-term investors."
@@ -95,9 +92,8 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
 
             {/* Acciones principales integradas */}
             <div
-              className={`flex flex-wrap items-center gap-4 pt-1 transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1250ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`flex flex-wrap items-center gap-4 pt-1 transition-[opacity,transform] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1250ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <Button href={isEn ? "/en/contact" : "/contacto"} variant="gold" size="md">
                 <span>{isEn ? "Discuss your wealth strategy" : "Conversemos sobre su patrimonio"}</span>
@@ -113,9 +109,8 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
 
       {/* 3. Zócalo Institucional Integrado en la Base del Hero */}
       <div
-        className={`relative z-10 border-t border-white/15 bg-black/40 backdrop-blur-md py-3.5 sm:py-4 transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1550ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
+        className={`relative z-10 border-t border-white/15 bg-black/40 backdrop-blur-md py-3.5 sm:py-4 transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[1550ms] motion-reduce:opacity-100 motion-reduce:translate-y-0 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
       >
         <div className="w-full max-w-[1800px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex items-center justify-between text-xs text-[#FAF9F5]/80">
           <div className="flex items-center gap-3">
