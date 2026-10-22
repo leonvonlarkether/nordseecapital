@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     url: "https://nordseecapital.com/en",
     images: [
       {
-        url: "/images/home/hero-nordsee.jpg",
-        width: 1376,
-        height: 768,
-        alt: "Nordsee Capital — Private Wealth & Investment Strategy",
+        url: "/images/og-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Nordsee Capital — Capital Management",
       },
     ],
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Nordsee Capital | Private Wealth & Investment Strategy",
     description:
       "Cross-border investment platform and corporate advisory for families and institutional investors in Chile, the US, and Europe.",
-    images: ["/images/home/hero-nordsee.jpg"],
+    images: ["/images/og-logo.png"],
   },
 };
 

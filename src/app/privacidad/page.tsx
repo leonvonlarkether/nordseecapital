@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     url: "https://nordseecapital.com/privacidad",
     images: [
       {
-        url: "/images/home/hero-nordsee.jpg",
-        width: 1376,
-        height: 768,
+        url: "/images/og-logo.png",
+        width: 1200,
+        height: 630,
         alt: "Política de Privacidad — Nordsee Capital",
       },
     ],
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Política de Privacidad y Protección de Datos | Nordsee Capital",
     description:
       "Marco de privacidad, tratamiento de datos personales y confidencialidad de Nordsee Capital, conforme a las Leyes 19.628 y 21.719 en Chile.",
-    images: ["/images/home/hero-nordsee.jpg"],
+    images: ["/images/og-logo.png"],
   },
 };
 

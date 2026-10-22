@@ -17,7 +17,7 @@ export function JsonLd() {
         legalName: siteConfig.legalName,
         url: "https://nordseecapital.com",
         logo: "https://nordseecapital.com/images/logo-nordsee.png",
-        image: "https://nordseecapital.com/images/home/hero-nordsee.jpg",
+        image: "https://nordseecapital.com/images/og-logo.png",
         description: siteConfig.description,
         telephone: siteConfig.phone,
         email: siteConfig.email,

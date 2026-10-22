@@ -36,6 +36,14 @@ export const metadata: Metadata = {
       "x-default": "/",
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/images/favicon.png",
+  },
   openGraph: {
     title: "Nordsee Capital | Gestión Patrimonial, Real Estate y Tax & Legal",
     description:
@@ -46,10 +54,10 @@ export const metadata: Metadata = {
     url: "https://nordseecapital.com",
     images: [
       {
-        url: "/images/home/hero-nordsee.jpg",
-        width: 1376,
-        height: 768,
-        alt: "Nordsee Capital — Inversión Patrimonial y Rigor Legal",
+        url: "/images/og-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Nordsee Capital — Capital Management",
       },
     ],
   },
@@ -58,7 +66,7 @@ export const metadata: Metadata = {
     title: "Nordsee Capital | Gestión Patrimonial, Real Estate y Tax & Legal",
     description:
       "Socio estratégico en gestión patrimonial, proyectos inmobiliarios internacionales, deuda privada, M&A y planificación legal y tributaria.",
-    images: ["/images/home/hero-nordsee.jpg"],
+    images: ["/images/og-logo.png"],
   },
   robots: {
     index: true,

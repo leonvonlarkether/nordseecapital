@@ -26,19 +26,23 @@ export function HomeHero({ locale = "es" }: { locale?: "es" | "en" }) {
           playsInline
           preload="auto"
           poster="/images/home/hero-video-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover object-[center_65%] pointer-events-none motion-reduce:hidden"
+          className="absolute inset-0 w-full h-full object-cover object-[74%_center] lg:object-[center_65%] pointer-events-none motion-reduce:hidden"
         >
           <source src="/video/velero3.mp4" type="video/mp4" />
         </video>
         <div
-          className="hidden motion-reduce:block absolute inset-0 bg-cover bg-[center_65%]"
+          className="hidden motion-reduce:block absolute inset-0 bg-cover bg-[74%_center] lg:bg-[center_65%]"
           style={{ backgroundImage: "url('/images/home/hero-video-poster.jpg')" }}
           aria-hidden="true"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent w-full md:w-[65%] lg:w-[50%] pointer-events-none" />
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+        {/* Capas de contraste adaptadas para Mobile/Tablet y Desktop */}
+        {/* Mobile & Tablet Portrait: gradiente vertical completo para asegurar legibilidad */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07101C]/80 via-[#07101C]/40 to-[#07101C]/90 lg:hidden pointer-events-none" />
+        {/* Desktop Widescreen: gradiente lateral izquierdo suave para texto editorial */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent w-full lg:w-[52%] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#07101C] via-[#07101C]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* 2. Cuerpo Editorial Principal */}

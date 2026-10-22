@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     url: "https://nordseecapital.com/en/services",
     images: [
       {
-        url: "/images/home/hero-nordsee.jpg",
-        width: 1376,
-        height: 768,
+        url: "/images/og-logo.png",
+        width: 1200,
+        height: 630,
         alt: "Nordsee Capital Practice Areas Portfolio",
       },
     ],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Services: Investment & Advisory Practice Areas | Nordsee Capital",
     description:
       "Comprehensive portfolio of solutions: Real Estate, Wealth Management, Private Debt, M&A Advisory, Tax & Legal, and Portugal Golden Visa.",
-    images: ["/images/home/hero-nordsee.jpg"],
+    images: ["/images/og-logo.png"],
   },
 };
 
